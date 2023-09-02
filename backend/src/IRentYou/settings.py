@@ -144,3 +144,5 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
+
+AUTH_USER_MODEL = "property.User"

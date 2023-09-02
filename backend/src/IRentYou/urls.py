@@ -19,10 +19,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from property.views import (PropertyListView, PropertyDetailView, PropertyCreateView,
+                            PropertyUpdateView,PropertyDeleteView)
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
-
+    path('', PropertyListView.as_view(), name="property-list"),
+    path('<slug>/', PropertyDetailView.as_view(), name="property-detail"),
+    path('<slug>/update/', PropertyUpdateView.as_view(), name="property-update"),
+    path('<slug>/delete/', PropertyDeleteView.as_view(), name="property-delete"),
+    path('create/', PropertyCreateView.as_view(), name="property-create"),
 ]
 
 if settings.DEBUG:
