@@ -26,10 +26,10 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('', PropertyListView.as_view(), name="property-list"),
-    path('<slug>/', PropertyDetailView.as_view(), name="property-detail"),
-    path('<slug>/update/', PropertyUpdateView.as_view(), name="property-update"),
-    path('<slug>/delete/', PropertyDeleteView.as_view(), name="property-delete"),
-    path('create/', PropertyCreateView.as_view(), name="property-create"),
+    path('create_property/', PropertyCreateView.as_view(), name="property-create"),
+    path('property/<int:pk>/detail/', PropertyDetailView.as_view(), name="property-detail"),
+    path('property/<int:pk>/update/', PropertyUpdateView.as_view(), name="property-update"),
+    path('property/<int:pk>/delete/', PropertyDeleteView.as_view(), name="property-delete"),
 ]
 
 if settings.DEBUG:
