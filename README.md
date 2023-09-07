@@ -15,7 +15,7 @@ This project aims to provide an online platform for users to register their prop
 
 ## More info 
 
-For additional details about the project, see our [Wiki](https://[github.com/sgalle16/TU_REPO/wiki](https://github.com/sgalle16/I-Rent-You/wiki))
+For additional details about the project, see our [Wiki](https://github.com/sgalle16/I-Rent-You/wiki)
 
 
 ## Installation and Usage
