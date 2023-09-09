@@ -1,11 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h1>Lista de Propiedades</h1>
 
-{% block content %}
-<div class = "container">
-    {% for object in object_list %}
-    
-    {{object.type_of_property}}
-    <img src="{{ object.images.url }}">
+  <form method="GET" action="">
+    <label for="property_type">Filtrar por tipo de propiedad:</label>
+    <select name="property_type" id="property_type">
+      <option value="">Todos</option>
+      <option value="apartment">Apartamento</option>
+      <option value="house">Casa</option>
+      <option value="room">Habitación</option>
+      <option value="office">Oficina</option>
+      <option value="studio">Aparta-Estudio</option>
+    </select>
+    <input type="submit" value="Filtrar" />
+  </form>
+
+  <ul>
+    {% for property in properties %}
+    <li>
+      <h2>{{ property.type_of_property}} {{ property.description}}</h2>
+      <p><strong>Ubicación:</strong> {{ property.location }}</p>
+      <p><strong>Precio de Alquiler:</strong> {{ property.rental_price }}</p>
+      <p><strong>Disponibilidad:</strong> {{ property.availability }}</p>
+      <img src="{{ property.images.url }}" alt="Imagen de la propiedad" />
+    </li>
+    {% empty %}
+    <p>No se encontraron propiedades.</p>
     {% endfor %}
+  </ul>
 </div>
 {% endblock content %}
