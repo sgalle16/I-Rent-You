@@ -52,7 +52,7 @@ class PropertyFeature(models.Model):
     parking_spaces = models.PositiveIntegerField()
     garden = models.BooleanField(default=False)
     pool = models.BooleanField(default=False)
-
+    backyard =  models.BooleanField(default=False)
     def __str__(self):
         return f"Características de {self.property.description}: {self.num_bedrooms} Beds | {self.num_bathrooms} Baths"
 
