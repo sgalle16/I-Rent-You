@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from property.views import (PropertyListView, PropertyDetailView, PropertyCreateView,
-                            PropertyUpdateView,PropertyDeleteView, PropertyFeatureCreateView)
+                            PropertyUpdateView,PropertyDeleteView)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -14,8 +14,6 @@ urlpatterns = [
     path('property/<int:pk>/detail/', PropertyDetailView.as_view(), name="property-detail"),
     path('property/<int:pk>/update/', PropertyUpdateView.as_view(), name="property-update"),
     path('property/<int:pk>/delete/', PropertyDeleteView.as_view(), name="property-delete"),
-
-    path('property/<int:pk>/add_feature/', PropertyFeatureCreateView.as_view(), name="add-feature")
 
 ]
 

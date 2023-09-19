@@ -8,7 +8,14 @@ class PropertyForm(forms.ModelForm):
         fields = ['type_of_property', 'time_for_rent', 'location', 'size',
                   'rental_price', 'availability', 'images', 'owner', 'description']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name in self.fields:
+            self.fields[field_name].required = True
+
+
 class PropertyFeatureForm(forms.ModelForm):
     class Meta:
         model = PropertyFeature
-        fields = ['num_bedrooms', 'num_bathrooms', 'parking_spaces', 'garden', 'pool']
+        fields = ['num_bedrooms', 'num_bathrooms',
+                  'parking_spaces', 'garden', 'pool']
