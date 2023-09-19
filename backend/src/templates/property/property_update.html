@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class = "container">
-    {% for object in object_list %}
+<div class="container">
+    <h1>{{ view_type }} Propiedad</h1>
     
-    {{object.type_of_property}}
-    <img src="{{ object.images.url }}">
-    {% endfor %}
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-section">
+            <h3>Detalles de la Propiedad</h3>
+            {{ form.as_p }}
+        </div>
+        
+        <div class="form-section">
+            <h3>Características</h3>
+            {{ feature_form.as_p }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
 </div>
 {% endblock content %}

@@ -29,47 +29,46 @@ class PropertyDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        # Obtener los detalles de la propiedad (PropertyFeature) relacionados con esta propiedad
-        property_details = PropertyFeature.objects.get(property=self.object)
+        # Utiliza el atributo 'features' para acceder a las características de la propiedad
+        property_details = self.object.features
 
         context['property_details'] = property_details
-        return context
-
-
-class PropertyFeatureCreateView(CreateView):
-    model = Property
-    form_class = PropertyFeatureForm  # Formulario
-    template_name = 'property/propertyfeature_form.html'
-    # Redirigir a la página de inicio después de crear una característica
-    success_url = '/'
-
-    def form_valid(self, form):
-        # Obtener la propiedad actual desde el ID de la URL
-        property_id = self.kwargs['pk']
-        property = get_object_or_404(Property, pk=property_id)
-
-        # Asignar la propiedad actual a la característica antes de guardarla
-        form.instance.property = property
-        return super().form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Obtener la propiedad actual desde el ID de la URL y pasarla al contexto
-        property_id = self.kwargs['pk']
-        property = get_object_or_404(Property, pk=property_id)
-        context['property'] = property
         return context
 
 
 class PropertyCreateView(CreateView):
     form_class = PropertyForm
     model = Property
-    success_url = '/'
+    template_name = 'property/property_create.html'
+    success_url = reverse_lazy('property-list')
+
+    def form_valid(self, form):
+        # Asigna el usuario(lessor) actual como propietario al crear la propiedad
+        # (PARA ESTO ES NECESARIO ESTAR AUTENTICADOS. LO CUAL AUN NO ESTA IMPLEMENTADO)
+        # form.instance.owner = self.request.user
+
+        # Validación de campos requeridos
+        if not form.is_valid():
+            return self.form_invalid(form)
+
+        # Guarda la propiedad
+        response = super().form_valid(form)
+
+        # Si el formulario de características es válido, guarda las características de la propiedad
+        feature_form = PropertyFeatureForm(self.request.POST)
+        if feature_form.is_valid():
+            feature = feature_form.save(commit=False)
+            feature.property = self.object  # 'self.object' contiene la propiedad recién creada
+            feature.save()
+
+        return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'crear'
+            'view_type': 'Crear',
+            # Agrega un formulario de características vacío al contexto
+            'feature_form': PropertyFeatureForm()
         })
         return context
 
@@ -77,16 +76,30 @@ class PropertyCreateView(CreateView):
 class PropertyUpdateView(UpdateView):
     form_class = PropertyForm
     model = Property
+    template_name = 'property/property_update.html'
     success_url = '/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'actualizar'
+            'view_type': 'Actualizar',
+            # Proporciona una instancia para editar características
+            'feature_form': PropertyFeatureForm(instance=self.object.features),
+
         })
         return context
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        feature_form = PropertyFeatureForm(
+            self.request.POST, instance=self.object.features)
+        if feature_form.is_valid():
+            feature_form.save()
+
+        return response
 
 
 class PropertyDeleteView(DeleteView):
     model = Property
+    template_name = 'property/property_delete.html'
     success_url = '/'

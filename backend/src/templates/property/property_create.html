@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Formulario para {{ view_type }} propiedad</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Formulario de Propiedad -->
+        <div class="form-section">
+            <h3>Datos de la Propiedad</h3>
+            {{ form.as_p }}
+        </div>
+        <!-- Formulario de Características -->
+        <div class="form-section">
+            <h3>Características de la Propiedad</h3>
+            {{ feature_form.as_p }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ view_type|title }} propiedad</button>
+    </form>
+</div>
+{% endblock content %}

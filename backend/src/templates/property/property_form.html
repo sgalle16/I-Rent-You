@@ -6,7 +6,7 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit" class="btn btn-primary">{{view_type|title}}</button>
+        <button type="submit" class="btn btn-primary">{{view_type|title}} propiedad</button>
     </form>
 </div>
 {% endblock content %}

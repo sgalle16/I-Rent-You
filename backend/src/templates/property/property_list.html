@@ -15,18 +15,23 @@
     <input type="submit" value="Filtrar" />
   </form>
 
-  <ul>
-    {% for property in properties %}
-    <li>
-      <h2>{{ property.type_of_property}} {{ property.description}}</h2>
-      <p><strong>Ubicación:</strong> {{ property.location }}</p>
-      <p><strong>Precio de Alquiler:</strong> {{ property.rental_price }}</p>
-      <p><strong>Disponibilidad:</strong> {{ property.availability }}</p>
-      <img src="{{ property.images.url }}" alt="Imagen de la propiedad" />
-    </li>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for property in properties %}
+    <div class="col mb-4" "mb-4"> 
+      <div class="card" >
+        <img src="{{ property.images.url }}" class="card-img-top img-fluid" alt="Imagen de la propiedad" style="max-height: 400px;" />
+        <div class="card-body">
+          <h2 class="card-title">{{ property.type_of_property }} {{ property.description }}</h2>
+          <p class="card-text"><strong>Ubicación:</strong> {{ property.location }}</p>
+          <p class="card-text"><strong>Precio de Alquiler:</strong> {{ property.rental_price }}</p>
+          <p class="card-text"><strong>Disponibilidad:</strong> {{ property.availability }}</p>
+          <a href="{% url 'property-detail' pk=property.id %}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
     {% empty %}
-    <p>No se encontraron propiedades.</p>
-    {% endfor %}
-  </ul>
+    <p class="col-12">No se encontraron propiedades.</p>
+  {% endfor %}
+  </div>
 </div>
 {% endblock content %}
