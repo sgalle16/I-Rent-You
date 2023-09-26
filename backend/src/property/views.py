@@ -45,7 +45,7 @@ class PropertyCreateView(CreateView):
     def form_valid(self, form):
         # Asigna el usuario(lessor) actual como propietario al crear la propiedad
         # (PARA ESTO ES NECESARIO ESTAR AUTENTICADOS. LO CUAL AUN NO ESTA IMPLEMENTADO)
-        # form.instance.owner = self.request.user
+        #form.instance.user = self.request.user
 
         # Validación de campos requeridos
         if not form.is_valid():

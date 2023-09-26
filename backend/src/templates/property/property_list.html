@@ -21,11 +21,11 @@
       <div class="card" >
         <img src="{{ property.images.url }}" class="card-img-top img-fluid" alt="Imagen de la propiedad" style="max-height: 400px;" />
         <div class="card-body">
-          <h2 class="card-title">{{ property.type_of_property }} {{ property.description }}</h2>
+          <h2 class="card-title">{{property.title}}</h2>
           <p class="card-text"><strong>Ubicación:</strong> {{ property.location }}</p>
           <p class="card-text"><strong>Precio de Alquiler:</strong> {{ property.rental_price }}</p>
-          <p class="card-text"><strong>Disponibilidad:</strong> {{ property.availability }}</p>
-          <a href="{% url 'property-detail' pk=property.id %}" class="btn btn-primary">Details</a>
+          <p class="card-text"><strong>Disponibilidad:</strong> {{ property.get_status_display }}</p>
+          <a href="{% url 'property-detail' pk=property.id %}" class="btn btn-primary">Detalles</a>
         </div>
       </div>
     </div>

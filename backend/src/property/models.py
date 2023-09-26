@@ -9,21 +9,61 @@ class User(AbstractUser):
         return self.username
 
 
-class Property(models.Model):
-    PROPERTY_TYPES = [
-        ('apartment', 'Apartamento'),
-        ('house', 'Casa'),
-        ('room', 'Habitación'),
-        ('office', 'Oficina'),
-        ('studio', 'Aparta-Estudio'),
-    ]
+PROPERTY_TYPES = [
+    ('apartment', 'Apartamento'),
+    ('house', 'Casa'),
+    ('room', 'Habitación'),
+    ('office', 'Oficina'),
+    ('studio', 'Aparta-Estudio'),
+]
 
+TIME_RENT = [
+    ('1', '1 mes'),
+    ('3', '3 meses'),
+    ('6', '6 meses'),
+    ('12', '1 año'),
+    ('24', '2 años'),
+    ('36', '3 años'),
+]
+
+STATUS_CHOICES = [
+    ('rented', 'Alquilado'),
+    ('available', 'Disponible'),
+    ('pending', 'Pendiente'),
+    ('other', 'Otro'),
+]
+
+NUM_BEDROOM = [
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+]
+
+NUM_BATHROOM = [
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+]
+
+
+class Property(models.Model):
+
+    title = models.CharField(max_length=100)
     type_of_property = models.CharField(max_length=20, choices=PROPERTY_TYPES)
-    time_for_rent = models.PositiveIntegerField(help_text="Time for rent in months")
-    location = models.CharField(max_length=100)
-    size = models.PositiveIntegerField(help_text="Size in square meters")
-    rental_price = models.DecimalField(max_digits=10, decimal_places=2)
-    availability = models.BooleanField(default=True)
+    time_for_rent = models.CharField(max_length=20,
+        choices=TIME_RENT,  help_text="Tiempo de renta en meses")
+    location = models.CharField(max_length=200, blank=False)
+    address = models.CharField(max_length=300, blank=False)
+    size = models.DecimalField(
+        max_digits=10, decimal_places=2, help_text="Tamaño en metros cuadrados (m²)")
+    rental_price = models.DecimalField(
+        max_digits=12, decimal_places=2, help_text="Precio de Alquiler (COP)")
+    status = models.CharField(
+        max_length=20, choices=STATUS_CHOICES, default='pending')
     images = models.ImageField(
         upload_to='media/property/property_images/', blank=True, null=True)
 
@@ -38,8 +78,7 @@ class Property(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.type_of_property} en {self.location} Disponible: {self.availability}"
-
+        return f"{self.type_of_property} | {self.title} en {self.location} - Estado: {self.get_status_display()}"
 
 
 # The `PropertyFeature` class represents the features of a property, including the number of bedrooms
@@ -47,14 +86,18 @@ class Property(models.Model):
 class PropertyFeature(models.Model):
     property = models.OneToOneField(
         Property, on_delete=models.CASCADE, related_name='features')
-    num_bedrooms = models.PositiveIntegerField()
-    num_bathrooms = models.PositiveIntegerField()
+    num_bedrooms = models.CharField(max_length=10,
+        choices=NUM_BEDROOM, unique=False)
+    num_bathrooms = models.CharField(max_length=10,
+        choices=NUM_BATHROOM, unique=False)
     parking_spaces = models.PositiveIntegerField()
     garden = models.BooleanField(default=False)
     pool = models.BooleanField(default=False)
-    backyard =  models.BooleanField(default=False)
+    backyard = models.BooleanField(default=False)
+    furnished = models.BooleanField(default=False)
+
     def __str__(self):
-        return f"Características de {self.property.description}: {self.num_bedrooms} Beds | {self.num_bathrooms} Baths"
+        return f"Características de {self.property.title}: {self.num_bedrooms} Beds | {self.num_bathrooms} Baths"
 
 
 # The `PropertyComment` class represents a comment made by a user on a property, with fields for the
@@ -88,3 +131,4 @@ class PropertyRating(models.Model):
 
     def __str__(self):
         return self.user.username
+        # return f"Calificación de {self.user.username} para {self.property.get_type_of_property_display()} en {self.property.location}"
