@@ -71,7 +71,7 @@ class Property(models.Model):
     # the `Property` model is creating a foreign key relationship between the `Property` model and the
     # `User` model.
     owner = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='properties')
+        User, on_delete=models.CASCADE, related_name='properties', null=True)
     description = models.TextField(blank=True)
 
     published_date = models.DateTimeField(auto_now_add=True)
