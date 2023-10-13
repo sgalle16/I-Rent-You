@@ -3,6 +3,34 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView, D
 from .models import Property, PropertyFeature, PropertyComment, PropertyRating
 from .forms import PropertyForm, PropertyFeatureForm
 from django.urls import reverse, reverse_lazy
+from django.db.models import Q
+
+
+def home(request):
+    return render(request, 'home.html')
+
+
+class PropertySearchListView(ListView):
+    model = Property
+    template_name = 'property/property_list.html'
+    context_object_name = 'properties'
+
+    # Obtener el valor del parámetro 'property_type' o 'location' de la solicitud GET desde la URL
+
+    def get_queryset(self):
+        queryset = Property.objects.all()
+        query = self.request.GET.get('q')
+        property_type = self.request.GET.get('property_type')
+
+        if query:
+            queryset = queryset.filter(
+                Q(title__icontains=query) | Q(location__icontains=query))
+
+        # Si se proporciona un valor para 'property_type', filtrar los objetos de Property por ese valor
+        if property_type:
+            queryset = queryset.filter(type_of_property=property_type)
+
+        return queryset
 
 
 class PropertyListView(ListView):
@@ -10,15 +38,10 @@ class PropertyListView(ListView):
     template_name = 'property/property_list.html'
     context_object_name = 'properties'
 
-    # Obtener el valor del parámetro 'property_type' de la solicitud GET desde la URL
     def get_queryset(self):
-        property_type = self.request.GET.get('property_type')
         # Obtener todos los objetos de Property
         queryset = Property.objects.all()
 
-        # Si se proporciona un valor para 'property_type', filtrar los objetos de Property por ese valor
-        if property_type:
-            queryset = queryset.filter(type_of_property=property_type)
         return queryset
 
 
@@ -45,7 +68,7 @@ class PropertyCreateView(CreateView):
     def form_valid(self, form):
         # Asigna el usuario(lessor) actual como propietario al crear la propiedad
         # (PARA ESTO ES NECESARIO ESTAR AUTENTICADOS. LO CUAL AUN NO ESTA IMPLEMENTADO)
-        #form.instance.owner = self.request.user
+        # form.instance.owner = self.request.user
 
         # Validación de campos requeridos
         if not form.is_valid():
