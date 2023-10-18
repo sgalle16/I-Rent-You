@@ -1,26 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Perfil de Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .btn-save {
+            display: block;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Perfil de Usuario</h1>
+        <h1 class="text-center">Perfil de Usuario</h1>
 
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-
-            <div>
-                <button type="submit">Guardar Cambios</button>
-            </div>
+            {{ form|crispy }}
+        
+            <button type="submit" class="btn btn-primary btn-save">Guardar Cambios</button>
+            <p class="text-center">Nota: Tu usuario no puede ser cambiado</p>
         </form>
 
-        <div class="delete-account">
+        <div>
+            <div style="margin-top: 10px;"></div>
+            <a href="{% url 'password_change' %}" class="btn btn-danger">Cambiar Contraseña</a>
+        </div>
+
+        <div class="delete-account text-center">
             <h2>Eliminar Cuenta</h2>
             <p>¿Deseas eliminar tu cuenta?</p>
             <a href="{% url 'confirm-delete-account' %}">Eliminar Cuenta</a>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
+{% endblock %}

@@ -1,3 +1,7 @@
+from django.contrib.auth.views import PasswordChangeView
+from .models import Notification
+from django.contrib.auth import update_session_auth_hash
+from django.urls import reverse_lazy
 from django.contrib import messages 
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -6,6 +10,9 @@ from django.contrib.auth import authenticate, login
 from Users.forms import CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import ProfileEditForm
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.forms import PasswordChangeForm
+
 
 def home(request):
     return render(request, 'InformacionEmpresa/home.html')
@@ -66,7 +73,7 @@ def view_and_edit_profile(request):
         form = ProfileEditForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('registration/profile.html')  # Puedes redirigir a la página de perfil nuevamente
+            return redirect('home')  # Puedes redirigir a la página de perfil nuevamente
     else:
         form = ProfileEditForm(instance=user)
 
@@ -80,3 +87,29 @@ def confirm_delete_account(request):
         return redirect('home')  # Reemplaza 'home' con la URL adecuada.
 
     return render(request, 'registration/confirm_delete_account.html')
+
+def notification_list(request):
+    notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
+
+    # Marcar las notificaciones como leídas
+    unread_notifications = notifications.filter(is_read=False)
+    unread_notifications.update(is_read=True)
+
+    context = {
+        'notifications': notifications,
+    }
+
+    return render(request, 'Otros/notify.html', context)
+
+class CustomPasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm  # Asegúrate de usar el formulario PasswordChangeForm
+
+    # URL de redirección después de un cambio exitoso (cambiado a 'perfil')
+    success_url = reverse_lazy('perfil')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        update_session_auth_hash(self.request, self.request.user)
+        messages.success(self.request, 'Tu contraseña ha sido cambiada con éxito.')
+        return response
+    
