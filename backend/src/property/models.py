@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from Users.models import User
 
-
-class User(AbstractUser):
+"""class User(AbstractUser):
     pass
 
     def __str__(self):
-        return self.username
+        return self.username"""
 
 
 PROPERTY_TYPES = [

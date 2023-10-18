@@ -18,11 +18,8 @@
     <link rel="mask-icon" href="/docs/5.2/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
     <link rel="icon" href="/docs/5.2/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#712cf9">
-
-    
-
   </head>
-<body>
+<body>  
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'property-list' %}">
@@ -41,21 +38,42 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'property-list' %}">Home</a>
-        </li>
+        <li class="nav-item"> 
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li> 
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'property-list' %}">Properties</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'property-create' %}">Create Properties</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Help</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">About us</a>
-        </li>
+          
+        {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                  <a class="nav-link text-danger" href="{% url 'perfil' %}">
+                      <i class="fas fa-user"></i> {{ user.username }}
+                  </a>
+              </li>
+              <li class="nav-item red-bg">
+                <a class="nav-link" href="{% url 'salir' %}">Salir</a>
+              </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+          </li>
+
+          
+        
+        
+        {% endif %}
+          
+
       </ul>
     </div>
   </div>
