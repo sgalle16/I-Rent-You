@@ -6,7 +6,7 @@ from property.views import (PropertyListView, PropertyDetailView, PropertyCreate
                             PropertyUpdateView,PropertyDeleteView)
 
 from django import views
-from Users.views import register_view , login_view , home , logoutaccount
+from Users.views import register_view , login_view , home , logoutaccount , view_and_edit_profile , confirm_delete_account
 
 
 urlpatterns = [
@@ -21,7 +21,8 @@ urlpatterns = [
     path('login/', login_view  , name="login"),
     path('register/', register_view , name="register"),   
     path('logoutaccount/', logoutaccount , name="salir"),    
-    path('perfil/', home , name="perfil"),    
+    path('perfil/', view_and_edit_profile , name="perfil"),    
+    path('perfil/confirm-delete-account/',confirm_delete_account , name='confirm-delete-account'),
 
     path('property/<int:pk>/detail/', PropertyDetailView.as_view(), name="property-detail"),
     path('property/<int:pk>/update/', PropertyUpdateView.as_view(), name="property-update"),

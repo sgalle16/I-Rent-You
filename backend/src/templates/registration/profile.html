@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Perfil de Usuario</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div>
+                <button type="submit">Guardar Cambios</button>
+            </div>
+        </form>
+
+        <div class="delete-account">
+            <h2>Eliminar Cuenta</h2>
+            <p>¿Deseas eliminar tu cuenta?</p>
+            <a href="{% url 'confirm-delete-account' %}">Eliminar Cuenta</a>
+        </div>
+    </div>
+</body>
+</html>

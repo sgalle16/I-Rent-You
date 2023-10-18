@@ -1,8 +1,14 @@
 from django import forms
+from .models import User
 from django.contrib.auth.forms import UserCreationForm
 from Users.models import User
 from django.contrib.auth.forms import AuthenticationForm
 
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'cell', 'type_of_document', 'number_of_document', 'roll', 'description']
 
 def login_view(request):
     if request.method == 'POST':

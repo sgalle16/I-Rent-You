@@ -5,6 +5,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
 from Users.forms import CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
+from .forms import ProfileEditForm
 
 def home(request):
     return render(request, 'InformacionEmpresa/home.html')
@@ -57,3 +58,25 @@ def register_view(request):
             data['form'] = user_creation_form
 
     return render(request, 'registration/register.html', data)
+
+def view_and_edit_profile(request):
+    user = request.user  # Obtén el usuario actualmente autenticado
+
+    if request.method == 'POST':
+        form = ProfileEditForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('registration/profile.html')  # Puedes redirigir a la página de perfil nuevamente
+    else:
+        form = ProfileEditForm(instance=user)
+
+    return render(request, 'registration/profile.html', {'form': form})
+
+@login_required
+def confirm_delete_account(request):
+    if request.method == 'POST':
+        # Elimina la cuenta y redirige a la página de inicio u otra página.
+        request.user.delete()
+        return redirect('home')  # Reemplaza 'home' con la URL adecuada.
+
+    return render(request, 'registration/confirm_delete_account.html')
