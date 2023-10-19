@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container">
     <h1>Detalles de la propiedad</h1>
-    
-    <h2>{{ object.type_of_property }} {{object.title}} en {{ object.location }}</h2>
+    <h2>{{object.title}} en {{ object.location }}</h2>
+    <p>Tipo de propiedad: {{ object.get_type_of_property_display }}</p>
     <p>Tiempo de alquiler: {{ object.time_for_rent }} meses</p>
     <p>Tamaño: {{ object.size }} metros cuadrados</p>
     <p>Precio de alquiler: ${{ object.rental_price }}</p>
