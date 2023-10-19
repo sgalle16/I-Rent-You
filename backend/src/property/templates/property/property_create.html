@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-4 mb-4">{{ view_type|title }} nueva Propiedad</h1>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <!-- Datos de la Propiedad -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Datos de la Propiedad
+            </div>
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+        </div>
+        
+        <!-- Características de la Propiedad -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Características de la Propiedad
+            </div>
+            <div class="card-body">
+                {{ feature_form|crispy }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">{{ view_type|title }} Propiedad</button>
+    </form>
+</div>
+{% endblock content %}

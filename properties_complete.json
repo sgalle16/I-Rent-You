@@ -1,0 +1,542 @@
+[
+    {
+        "title": "Hermosa finca con piscina y jard\u00edn en San Juan del Cesar",
+        "description": "La hermosa finca con piscina y jard\u00edn en San Juan del Cesar es una propiedad ideal para aquellos que buscan una escapada tranquila y relajante. Con un tama\u00f1o de 500 metros cuadrados, esta finca cuenta con 4 habitaciones amplias y c\u00f3modas, perfectas para alojar a grupos grandes o familias. Adem\u00e1s, cuenta con 3 ba\u00f1os completos, lo que garantiza comodidad y privacidad para todos los hu\u00e9spedes. El punto destacado de esta propiedad es su impresionante piscina y su extenso jard\u00edn, donde los hu\u00e9spedes pueden disfrutar de momentos de diversi\u00f3n y relajaci\u00f3n al aire libre. Ideal para aquellos que buscan disfrutar de la naturaleza y la tranquilidad.",
+        "type_of_property": "house",
+        "time_for_rent": "12",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Transversal 49 - 25",
+        "size": 206.85,
+        "rental_price": 606964.43,
+        "status": "pending",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "3",
+            "parking_spaces": 3,
+            "garden": false,
+            "pool": false,
+            "backyard": false,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa rural con vista a las monta\u00f1as en La Guajira",
+        "description": "La Casa rural con vista a las monta\u00f1as en La Guajira es una encantadora propiedad ubicada en un entorno natural impresionante. Con un tama\u00f1o de 150 metros cuadrados, esta casa cuenta con 3 habitaciones amplias y acogedoras, perfectas para alojar a grupos o familias. Adem\u00e1s, dispone de 2 ba\u00f1os completos, lo que garantiza comodidad y privacidad para todos los hu\u00e9spedes. Su ubicaci\u00f3n privilegiada ofrece vistas panor\u00e1micas a las majestuosas monta\u00f1as de La Guajira, creando un ambiente tranquilo y relajante. Ideal para aquellos que buscan escapar del bullicio de la ciudad y disfrutar de la belleza natural de la regi\u00f3n.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Transversal 87 - 88",
+        "size": 194.63,
+        "rental_price": 1417555.51,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "2",
+            "parking_spaces": 3,
+            "garden": false,
+            "pool": false,
+            "backyard": true,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Amplia residencia con piscina y cancha de tenis en San Juan del Cesar",
+        "description": "La amplia residencia con piscina y cancha de tenis en San Juan del Cesar es una impresionante propiedad ideal para aquellos que buscan disfrutar de unas vacaciones llenas de comodidad y entretenimiento. Con un tama\u00f1o generoso, esta residencia cuenta con 5 habitaciones y 4 ba\u00f1os, ofreciendo espacio m\u00e1s que suficiente para acomodar a grupos grandes o familias numerosas. Adem\u00e1s de su impresionante piscina, perfecta para refrescarse en los d\u00edas calurosos, la propiedad tambi\u00e9n cuenta con una cancha de tenis, lo que la convierte en un lugar perfecto para los amantes del deporte. Con su ubicaci\u00f3n en San Juan del Cesar, los hu\u00e9spedes podr\u00e1n disfrutar de hermosos paisajes y explorar las atracciones tur\u00edsticas cercanas.",
+        "type_of_property": "apartment",
+        "time_for_rent": "6",
+        "location": "16 de Julio, San Juan del Cesar, La Guajira",
+        "address": "Diagonal 5 - 9",
+        "size": 85.53,
+        "rental_price": 2513269.3,
+        "status": "pending",
+        "property_feature": {
+            "num_bedrooms": "4",
+            "num_bathrooms": "2",
+            "parking_spaces": 3,
+            "garden": false,
+            "pool": false,
+            "backyard": true,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Finca moderna en el centro hist\u00f3rico con acabados de lujo en La Guajira",
+        "description": "La finca moderna en el centro hist\u00f3rico de La Guajira es una joya arquitect\u00f3nica con acabados de lujo. Con un tama\u00f1o de 300 metros cuadrados, esta propiedad cuenta con 4 amplias habitaciones y 3 ba\u00f1os completos. Su dise\u00f1o contempor\u00e1neo se fusiona perfectamente con el encanto hist\u00f3rico de la zona, creando un ambiente \u00fanico y acogedor. Adem\u00e1s, la finca cuenta con una cocina totalmente equipada, una sala de estar espaciosa y una terraza privada con vistas panor\u00e1micas de la ciudad. Ideal para aquellos que buscan una experiencia de lujo en el coraz\u00f3n de La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "36",
+        "location": "El Centro, San Juan del Cesar, La Guajira",
+        "address": "Diagonal 18 - 117",
+        "size": 67.21,
+        "rental_price": 4654927.77,
+        "status": "pending",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "5",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Apartamento con vistas al mar y acceso a la playa en La Guajira",
+        "description": "Este apartamento en La Guajira ofrece una ubicaci\u00f3n privilegiada con vistas al mar y acceso directo a la playa. Con un tama\u00f1o de 80 metros cuadrados, cuenta con 2 habitaciones amplias y c\u00f3modas, perfectas para alojar hasta 4 personas. Adem\u00e1s, dispone de 2 ba\u00f1os completos, lo que garantiza comodidad y privacidad para todos los hu\u00e9spedes. El apartamento est\u00e1 completamente equipado con todas las comodidades necesarias, incluyendo cocina, sala de estar y balc\u00f3n con vistas panor\u00e1micas al mar. Ideal para aquellos que buscan disfrutar de unas vacaciones relajantes en un entorno paradis\u00edaco.",
+        "type_of_property": "apartment",
+        "time_for_rent": "6",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Transversal 29 - 60",
+        "size": 212.72,
+        "rental_price": 2374798.87,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "1",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": false,
+            "backyard": false,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa de estilo mediterr\u00e1neo con patio y piscina privada en La Guajira",
+        "description": "Esta hermosa casa de estilo mediterr\u00e1neo en La Guajira es perfecta para aquellos que buscan una escapada tranquila y relajante. Con un tama\u00f1o de 200 metros cuadrados, esta propiedad cuenta con 3 amplias habitaciones y 2 ba\u00f1os completos. El patio privado es ideal para disfrutar de comidas al aire libre y relajarse junto a la piscina privada. Adem\u00e1s, la casa est\u00e1 ubicada cerca de hermosas playas y ofrece vistas impresionantes del mar Caribe. Con su encanto mediterr\u00e1neo y comodidades modernas, esta casa es ideal para familias o grupos de amigos que deseen disfrutar de unas vacaciones inolvidables en La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "Regional, San Juan del Cesar, La Guajira",
+        "address": "Calle 32 - 31",
+        "size": 252.69,
+        "rental_price": 715851.1,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "1",
+            "num_bathrooms": "4",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": true,
+            "backyard": true,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Oficina amueblada con balc\u00f3n en zona exclusiva de San Juan del Cesar",
+        "description": "Esta oficina amueblada con balc\u00f3n se encuentra en una zona exclusiva de San Juan del Cesar. Con un tama\u00f1o de aproximadamente 80 metros cuadrados, ofrece un espacio amplio y c\u00f3modo para trabajar. Cuenta con una habitaci\u00f3n privada que puede ser utilizada como despacho o sala de reuniones, as\u00ed como un ba\u00f1o completo. El balc\u00f3n brinda un ambiente agradable y relajante, perfecto para tomar un descanso o disfrutar de una vista panor\u00e1mica de la ciudad. Esta propiedad es ideal para aquellos que buscan un lugar tranquilo y profesional para llevar a cabo sus actividades laborales.",
+        "type_of_property": "office",
+        "time_for_rent": "1",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Transversal 78 - 63",
+        "size": 197.49,
+        "rental_price": 2146994.14,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "5",
+            "num_bathrooms": "1",
+            "parking_spaces": 2,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa cl\u00e1sica a las afueras de San Juan del Cesar",
+        "description": "La \"Casa cl\u00e1sica a las afueras de San Juan del Cesar\" es una encantadora propiedad ubicada en un entorno tranquilo y pintoresco. Con un tama\u00f1o de 150 metros cuadrados, esta casa cuenta con 3 habitaciones amplias y acogedoras, perfectas para alojar a una familia o grupo de amigos. Adem\u00e1s, dispone de 2 ba\u00f1os completos, lo que garantiza comodidad y privacidad para todos los hu\u00e9spedes. Su dise\u00f1o cl\u00e1sico y elegante, combinado con su hermoso jard\u00edn y patio trasero, crea un ambiente relajante y perfecto para disfrutar de la naturaleza. Ideal para aquellos que buscan escapar del bullicio de la ciudad y disfrutar de la tranquilidad del campo.",
+        "type_of_property": "house",
+        "time_for_rent": "24",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Calle 37 - 192",
+        "size": 106.82,
+        "rental_price": 3241197.36,
+        "status": "pending",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "3",
+            "parking_spaces": 2,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Aparta-estudio para una persona cerca a El Centro ",
+        "description": "El aparta-estudio para una persona cerca a El Centro es una acogedora propiedad ideal para aquellos que buscan una estancia c\u00f3moda y conveniente en la ciudad. Con un tama\u00f1o compacto, este aparta-estudio ofrece una habitaci\u00f3n amplia y luminosa, perfecta para una persona. Adem\u00e1s, cuenta con un ba\u00f1o completo y una peque\u00f1a cocina equipada con todo lo necesario para preparar comidas sencillas. Su ubicaci\u00f3n cercana al centro de la ciudad permite un f\u00e1cil acceso a los principales lugares de inter\u00e9s tur\u00edstico, as\u00ed como a restaurantes, tiendas y transporte p\u00fablico. Es una excelente opci\u00f3n para aquellos que desean explorar la ciudad de manera independiente.",
+        "type_of_property": "studio",
+        "time_for_rent": "12",
+        "location": "Regional, San Juan del Cesar, La Guajira",
+        "address": "Avenida 42 - 53",
+        "size": 90.68,
+        "rental_price": 4766256.36,
+        "status": "pending",
+        "property_feature": {
+            "num_bedrooms": "4",
+            "num_bathrooms": "1",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa elegante con jard\u00edn en La Guajira",
+        "description": "La Casa elegante con jard\u00edn en La Guajira es una hermosa propiedad de estilo colonial ubicada en un entorno tranquilo y pintoresco. Con un tama\u00f1o de 200 metros cuadrados, esta casa cuenta con 3 amplias habitaciones y 2 ba\u00f1os completos, perfecta para alojar a grupos o familias de hasta 6 personas. Su jard\u00edn privado es ideal para relajarse y disfrutar del clima c\u00e1lido de la regi\u00f3n. Adem\u00e1s, la casa est\u00e1 equipada con todas las comodidades necesarias, como cocina totalmente equipada, aire acondicionado y conexi\u00f3n Wi-Fi. Su ubicaci\u00f3n estrat\u00e9gica permite un f\u00e1cil acceso a las playas y atractivos tur\u00edsticos de La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Transversal 33 - 162",
+        "size": 130.7,
+        "rental_price": 1755918.24,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "5",
+            "parking_spaces": 2,
+            "garden": true,
+            "pool": false,
+            "backyard": true,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Apartamento moderno en San Juan del Cesar",
+        "description": "El apartamento moderno en San Juan del Cesar es una opci\u00f3n ideal para aquellos que buscan comodidad y estilo en su estad\u00eda. Con un tama\u00f1o de 80 metros cuadrados, cuenta con 2 habitaciones amplias y luminosas, perfectas para alojar hasta 4 personas. Adem\u00e1s, dispone de 2 ba\u00f1os completos, lo que garantiza privacidad y comodidad para todos los hu\u00e9spedes. Su dise\u00f1o contempor\u00e1neo y elegante crea un ambiente acogedor y relajante. Ubicado en una zona c\u00e9ntrica, ofrece f\u00e1cil acceso a restaurantes, tiendas y atracciones tur\u00edsticas. Sin duda, este apartamento es una excelente opci\u00f3n para disfrutar de una estancia inolvidable en San Juan del Cesar.",
+        "type_of_property": "apartment",
+        "time_for_rent": "36",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Diagonal 94 - 95",
+        "size": 279.79,
+        "rental_price": 3476432.42,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "1",
+            "num_bathrooms": "3",
+            "parking_spaces": 2,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Aparta-estudio c\u00e9ntrico en La Guajira",
+        "description": "El aparta-estudio c\u00e9ntrico en La Guajira es una acogedora propiedad ideal para parejas o viajeros solitarios. Con un tama\u00f1o compacto, este apartamento cuenta con una habitaci\u00f3n c\u00f3moda y un ba\u00f1o completo. Su ubicaci\u00f3n c\u00e9ntrica permite un f\u00e1cil acceso a los principales puntos de inter\u00e9s tur\u00edstico de La Guajira. Adem\u00e1s, ofrece una cocina equipada con los elementos b\u00e1sicos para preparar comidas sencillas. Su dise\u00f1o moderno y funcional crea un ambiente acogedor y confortable para los hu\u00e9spedes. Perfecto para aquellos que buscan una estancia econ\u00f3mica y conveniente en esta hermosa regi\u00f3n de Colombia.",
+        "type_of_property": "studio",
+        "time_for_rent": "1",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Transversal 10 - 78",
+        "size": 173.95,
+        "rental_price": 2247046.23,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "2",
+            "parking_spaces": 3,
+            "garden": true,
+            "pool": false,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Casa contempor\u00e1nea en La Guajira",
+        "description": "La Casa contempor\u00e1nea en La Guajira es una impresionante propiedad ubicada en un entorno natural \u00fanico. Con un tama\u00f1o de 200 metros cuadrados, esta casa cuenta con 3 amplias habitaciones y 2 ba\u00f1os completos. Su dise\u00f1o moderno y elegante se fusiona perfectamente con el paisaje circundante, ofreciendo vistas panor\u00e1micas desde todas las habitaciones. Adem\u00e1s, la casa cuenta con una cocina totalmente equipada, sala de estar y comedor, perfectos para disfrutar de momentos de relajaci\u00f3n y convivencia. Su ubicaci\u00f3n privilegiada cerca de playas paradis\u00edacas y atracciones tur\u00edsticas la convierte en una opci\u00f3n ideal para aquellos que buscan una experiencia inolvidable en La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "12",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Calle 36 - 63",
+        "size": 187.45,
+        "rental_price": 4227389.42,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "4",
+            "num_bathrooms": "2",
+            "parking_spaces": 0,
+            "garden": false,
+            "pool": false,
+            "backyard": true,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Amplia casa en San Juan del Cesar con patio trasero",
+        "description": "Amplia casa en San Juan del Cesar con patio trasero. Esta encantadora casa cuenta con un tama\u00f1o generoso, perfecto para grupos o familias numerosas. Con 4 habitaciones y 3 ba\u00f1os, ofrece un amplio espacio para alojar hasta 8 personas c\u00f3modamente. El patio trasero es ideal para relajarse al aire libre y disfrutar de momentos de tranquilidad. Adem\u00e1s, la casa est\u00e1 ubicada en una zona tranquila de San Juan del Cesar, lo que garantiza una estancia tranquila y apacible. Perfecta para aquellos que buscan un lugar espacioso y acogedor para disfrutar de sus vacaciones en esta encantadora ciudad.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "El Centro, San Juan del Cesar, La Guajira",
+        "address": "Diagonal 84 - 137",
+        "size": 52.41,
+        "rental_price": 957696.96,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "4",
+            "num_bathrooms": "5",
+            "parking_spaces": 1,
+            "garden": false,
+            "pool": false,
+            "backyard": true,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa de dise\u00f1o con piscina climatizada en La Guajira",
+        "description": "La Casa de dise\u00f1o con piscina climatizada en La Guajira es una impresionante propiedad de estilo moderno y elegante. Con un tama\u00f1o de 200 metros cuadrados, esta casa cuenta con 3 amplias habitaciones y 2 ba\u00f1os completos. La piscina climatizada es perfecta para relajarse y disfrutar del clima c\u00e1lido de La Guajira. Adem\u00e1s, la casa cuenta con una cocina totalmente equipada, sala de estar c\u00f3moda y un hermoso jard\u00edn. Ubicada en una zona tranquila y segura, esta propiedad es ideal para aquellos que buscan una experiencia de lujo y confort durante su estad\u00eda en La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "Regional, San Juan del Cesar, La Guajira",
+        "address": "Transversal 74 - 67",
+        "size": 196.08,
+        "rental_price": 4080157.22,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "2",
+            "parking_spaces": 3,
+            "garden": false,
+            "pool": false,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Acogedor apartamento en el centro hist\u00f3rico de San Juan del Cesar",
+        "description": "El acogedor apartamento en el centro hist\u00f3rico de San Juan del Cesar es una opci\u00f3n ideal para aquellos que deseen explorar la rica historia y cultura de esta encantadora ciudad. Con un tama\u00f1o de 60 metros cuadrados, este apartamento cuenta con 2 habitaciones y 1 ba\u00f1o, lo que lo hace perfecto para parejas o peque\u00f1as familias. Su ubicaci\u00f3n privilegiada en el centro hist\u00f3rico permite a los hu\u00e9spedes disfrutar de f\u00e1cil acceso a los principales lugares de inter\u00e9s, como la iglesia colonial y el museo local. Adem\u00e1s, el apartamento est\u00e1 completamente equipado con todas las comodidades necesarias para una estancia confortable, incluyendo cocina, sala de estar y conexi\u00f3n Wi-Fi gratuita.",
+        "type_of_property": "apartment",
+        "time_for_rent": "3",
+        "location": "Las Tunas I, San Juan del Cesar, La Guajira",
+        "address": "Diagonal 25 - 73",
+        "size": 113.48,
+        "rental_price": 2227048.22,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "4",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": false,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Casa rural con encanto y jard\u00edn en La Guajira",
+        "description": "La Casa rural con encanto y jard\u00edn en La Guajira es una hermosa propiedad ubicada en un entorno rural, perfecta para aquellos que buscan una experiencia tranquila y relajante. Con un tama\u00f1o de 150 metros cuadrados, esta casa cuenta con 3 habitaciones amplias y acogedoras, ideales para alojar a grupos o familias. Adem\u00e1s, dispone de 2 ba\u00f1os completos, lo que garantiza comodidad y privacidad para todos los hu\u00e9spedes. El jard\u00edn de la propiedad es un verdadero oasis, con una variedad de plantas y flores ex\u00f3ticas, perfecto para disfrutar de momentos al aire libre y conectar con la naturaleza.",
+        "type_of_property": "house",
+        "time_for_rent": "36",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Calle 23 - 183",
+        "size": 190.54,
+        "rental_price": 2216604.87,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "5",
+            "parking_spaces": 3,
+            "garden": false,
+            "pool": false,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Apartamento luminoso en zona c\u00e9ntrica de San Juan del Cesar",
+        "description": "Este apartamento luminoso se encuentra en una zona c\u00e9ntrica de San Juan del Cesar, ideal para aquellos que deseen explorar la ciudad. Con un tama\u00f1o de aproximadamente 80 metros cuadrados, cuenta con 2 habitaciones y 1 ba\u00f1o completo. La propiedad est\u00e1 completamente amueblada y equipada con todas las comodidades necesarias para una estancia confortable. Adem\u00e1s, ofrece una hermosa vista panor\u00e1mica de la ciudad desde su balc\u00f3n. Su ubicaci\u00f3n privilegiada permite un f\u00e1cil acceso a restaurantes, tiendas y atracciones tur\u00edsticas. Perfecto para parejas o peque\u00f1os grupos que buscan una experiencia aut\u00e9ntica en San Juan del Cesar.",
+        "type_of_property": "apartment",
+        "time_for_rent": "3",
+        "location": "16 de Julio, San Juan del Cesar, La Guajira",
+        "address": "Avenida 46 - 155",
+        "size": 242.14,
+        "rental_price": 595665.65,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "5",
+            "parking_spaces": 3,
+            "garden": true,
+            "pool": false,
+            "backyard": true,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Hermosa finca en comunidad cerrada con seguridad vigilada en La Guajira",
+        "description": "Esta hermosa finca se encuentra ubicada en una comunidad cerrada con seguridad vigilada en La Guajira. Con un tama\u00f1o amplio, ofrece un espacio perfecto para aquellos que buscan tranquilidad y privacidad. La propiedad cuenta con varias habitaciones y ba\u00f1os, ideales para alojar a grupos grandes o familias numerosas. Adem\u00e1s, cuenta con \u00e1reas comunes como piscina, jardines y zona de barbacoa, perfectas para disfrutar del clima c\u00e1lido de la regi\u00f3n. Su ubicaci\u00f3n privilegiada permite disfrutar de hermosas vistas panor\u00e1micas y estar cerca de atracciones tur\u00edsticas como playas, parques naturales y pueblos pintorescos.",
+        "type_of_property": "room",
+        "time_for_rent": "24",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Calle 82 - 60",
+        "size": 181.47,
+        "rental_price": 2488679.89,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "1",
+            "num_bathrooms": "3",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": true,
+            "backyard": true,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa adosada con jard\u00edn y garaje en urbanizaci\u00f3n tranquila en San Juan del Cesar",
+        "description": "Esta casa adosada en San Juan del Cesar es perfecta para aquellos que buscan tranquilidad y comodidad. Con un jard\u00edn privado y garaje, los hu\u00e9spedes podr\u00e1n disfrutar de espacios al aire libre y estacionamiento seguro. La propiedad cuenta con 3 habitaciones y 2 ba\u00f1os, lo que la hace ideal para familias o grupos de amigos. Adem\u00e1s, su tama\u00f1o espacioso ofrece un ambiente acogedor y relajante. Situada en una urbanizaci\u00f3n tranquila, los visitantes podr\u00e1n disfrutar de la paz y la serenidad de la zona, mientras que su ubicaci\u00f3n estrat\u00e9gica permite un f\u00e1cil acceso a las atracciones tur\u00edsticas de la regi\u00f3n.",
+        "type_of_property": "house",
+        "time_for_rent": "1",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Diagonal 95 - 85",
+        "size": 240.74,
+        "rental_price": 3906894.79,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "2",
+            "parking_spaces": 2,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Lujoso apartamento con servicios incluidos en el alquiler en La Guajira",
+        "description": "Este lujoso apartamento en La Guajira es perfecto para aquellos que buscan una experiencia de alojamiento de lujo. Con un tama\u00f1o generoso, cuenta con 3 amplias habitaciones y 2 ba\u00f1os completos. Adem\u00e1s, ofrece servicios incluidos en el alquiler, lo que significa que los hu\u00e9spedes podr\u00e1n disfrutar de comodidades adicionales sin costo adicional, como limpieza diaria, acceso a un gimnasio y piscina, y estacionamiento privado. Su ubicaci\u00f3n privilegiada en La Guajira permite a los hu\u00e9spedes disfrutar de hermosas vistas al mar y acceder f\u00e1cilmente a las principales atracciones tur\u00edsticas de la zona.",
+        "type_of_property": "apartment",
+        "time_for_rent": "24",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Transversal 28 - 42",
+        "size": 157.01,
+        "rental_price": 1772365.49,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "4",
+            "num_bathrooms": "2",
+            "parking_spaces": 1,
+            "garden": false,
+            "pool": true,
+            "backyard": true,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Casa finca con acceso privado a mirador en San Juan del Cesar",
+        "description": "La Casa finca con acceso privado a mirador en San Juan del Cesar es una hermosa propiedad ubicada en un entorno natural impresionante. Con un tama\u00f1o de 200 metros cuadrados, esta casa cuenta con 3 habitaciones y 2 ba\u00f1os, lo que la hace perfecta para una familia o un grupo de amigos. Adem\u00e1s, ofrece acceso privado a un mirador, desde donde se puede disfrutar de vistas panor\u00e1micas de la zona. Con una decoraci\u00f3n r\u00fastica y acogedora, esta casa finca es el lugar ideal para relajarse y disfrutar de la tranquilidad del campo.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "Juan Bautista Forero, San Juan del Cesar, La Guajira",
+        "address": "Transversal 33 - 118",
+        "size": 184.16,
+        "rental_price": 3756715.06,
+        "status": "pending",
+        "property_feature": {
+            "num_bedrooms": "1",
+            "num_bathrooms": "2",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": true,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Casa de lujo con vista al mar en primera l\u00ednea en La Guajira",
+        "description": "La Casa de lujo con vista al mar en primera l\u00ednea en La Guajira es una impresionante propiedad que ofrece una experiencia de lujo y comodidad. Con un tama\u00f1o de 300 metros cuadrados, esta casa cuenta con 4 amplias habitaciones y 3 ba\u00f1os completos. Su ubicaci\u00f3n privilegiada en primera l\u00ednea de mar permite disfrutar de vistas panor\u00e1micas al oc\u00e9ano desde todas las \u00e1reas de la casa. Adem\u00e1s, la propiedad cuenta con una piscina privada, un amplio jard\u00edn y una terraza con mobiliario exterior, perfecta para relajarse y disfrutar del entorno. Esta casa de lujo es ideal para aquellos que buscan una experiencia exclusiva y tranquila en La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "6",
+        "location": "16 de Julio, San Juan del Cesar, La Guajira",
+        "address": "Avenida 88 - 32",
+        "size": 233.75,
+        "rental_price": 4186532.64,
+        "status": "rented",
+        "property_feature": {
+            "num_bedrooms": "4",
+            "num_bathrooms": "5",
+            "parking_spaces": 2,
+            "garden": true,
+            "pool": true,
+            "backyard": true,
+            "furnished": false
+        }
+    },
+    {
+        "title": "Amplia casa familiar en zona residencial tranquila en San Juan del Cesar",
+        "description": "Amplia casa familiar en zona residencial tranquila en San Juan del Cesar. Esta casa cuenta con 4 habitaciones y 3 ba\u00f1os, lo que la hace perfecta para familias numerosas o grupos de amigos. Con un tama\u00f1o de 200 metros cuadrados, ofrece amplios espacios interiores y exteriores para disfrutar de momentos de relajaci\u00f3n. Adem\u00e1s, cuenta con una cocina totalmente equipada y una sala de estar acogedora. Su ubicaci\u00f3n en una zona residencial tranquila garantiza la paz y la tranquilidad durante su estancia. Ideal para aquellos que buscan un lugar espacioso y c\u00f3modo para descansar mientras exploran San Juan del Cesar.",
+        "type_of_property": "house",
+        "time_for_rent": "36",
+        "location": "Las Tunas I, San Juan del Cesar, La Guajira",
+        "address": "Carrera 40 - 56",
+        "size": 290.35,
+        "rental_price": 3457118.62,
+        "status": "rented",
+        "property_feature": {
+            "num_bedrooms": "1",
+            "num_bathrooms": "5",
+            "parking_spaces": 3,
+            "garden": false,
+            "pool": false,
+            "backyard": true,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Casa de campo en alquiler con jard\u00edn grande en La Guajira",
+        "description": "Esta hermosa casa de campo en alquiler se encuentra en La Guajira y cuenta con un jard\u00edn grande, perfecto para aquellos que buscan disfrutar de la tranquilidad y la naturaleza. La propiedad tiene un tama\u00f1o amplio, con 3 habitaciones y 2 ba\u00f1os, lo que la hace ideal para familias o grupos de amigos. Adem\u00e1s, cuenta con una cocina totalmente equipada, sala de estar acogedora y una terraza donde se puede disfrutar de las vistas panor\u00e1micas. Con su ubicaci\u00f3n privilegiada cerca de hermosas playas y paisajes deslumbrantes, esta casa de campo es el lugar perfecto para relajarse y disfrutar de unas vacaciones inolvidables en La Guajira.",
+        "type_of_property": "house",
+        "time_for_rent": "1",
+        "location": "El Prado, San Juan del Cesar, La Guajira",
+        "address": "Avenida 18 - 96",
+        "size": 263.07,
+        "rental_price": 3607332.3,
+        "status": "rented",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "2",
+            "parking_spaces": 0,
+            "garden": true,
+            "pool": false,
+            "backyard": true,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Moderna casa de dise\u00f1o con piscina privada en San Juan del Cesar",
+        "description": "La moderna casa de dise\u00f1o con piscina privada en San Juan del Cesar es una propiedad espaciosa y elegante que ofrece una experiencia de lujo para los turistas. Con un tama\u00f1o de 200 metros cuadrados, esta casa cuenta con 3 habitaciones y 2 ba\u00f1os, lo que la hace ideal para grupos o familias de hasta 6 personas. Adem\u00e1s de su dise\u00f1o contempor\u00e1neo, la casa cuenta con una amplia piscina privada donde los hu\u00e9spedes pueden relajarse y disfrutar del clima c\u00e1lido de la regi\u00f3n. Su ubicaci\u00f3n en San Juan del Cesar ofrece f\u00e1cil acceso a las playas cercanas y atractivos tur\u00edsticos de la zona.",
+        "type_of_property": "house",
+        "time_for_rent": "12",
+        "location": "Regional, San Juan del Cesar, La Guajira",
+        "address": "Calle 15 - 83",
+        "size": 132.25,
+        "rental_price": 555348.81,
+        "status": "other",
+        "property_feature": {
+            "num_bedrooms": "2",
+            "num_bathrooms": "2",
+            "parking_spaces": 0,
+            "garden": false,
+            "pool": false,
+            "backyard": false,
+            "furnished": true
+        }
+    },
+    {
+        "title": "Apartamento amueblado en el centro de la ciudad de San Juan del Cesar",
+        "description": "Este apartamento amueblado en el centro de la ciudad de San Juan del Cesar es una opci\u00f3n ideal para los turistas que desean estar cerca de todas las atracciones principales. Con un tama\u00f1o de 80 metros cuadrados, cuenta con 2 habitaciones y 1 ba\u00f1o, lo que lo hace perfecto para parejas o peque\u00f1os grupos de amigos. Adem\u00e1s, ofrece una cocina totalmente equipada, sala de estar c\u00f3moda y una ubicaci\u00f3n conveniente cerca de restaurantes, tiendas y lugares de inter\u00e9s tur\u00edstico. Los hu\u00e9spedes podr\u00e1n disfrutar de una estancia confortable y conveniente en este apartamento durante su visita a San Juan del Cesar.",
+        "type_of_property": "apartment",
+        "time_for_rent": "24",
+        "location": "Para\u00edso de Betel, San Juan del Cesar, La Guajira",
+        "address": "Transversal 6 - 112",
+        "size": 66.67,
+        "rental_price": 762934.72,
+        "status": "available",
+        "property_feature": {
+            "num_bedrooms": "3",
+            "num_bathrooms": "3",
+            "parking_spaces": 0,
+            "garden": false,
+            "pool": false,
+            "backyard": false,
+            "furnished": false
+        }
+    }
+]

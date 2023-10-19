@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ view_type }} Propiedad</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-section">
+            <h3>Detalles de la Propiedad</h3>
+            {{ form.as_p }}
+        </div>
+        
+        <div class="form-section">
+            <h3>Características</h3>
+            {{ feature_form.as_p }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+{% endblock content %}
