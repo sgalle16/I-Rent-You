@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser , User
+from django.contrib.auth.models import AbstractUser, User
 from django.contrib.auth.models import BaseUserManager
 
 document_types = [
@@ -14,23 +14,23 @@ document_types = [
 
 role_types = [
     ('lessor', 'Arrendador'),
-    ('Tenant', 'Arrendatario'),
+    ('tenant', 'Arrendatario'),
 ]
 
-class User(AbstractUser):   
+
+class User(AbstractUser):
     username = models.CharField(max_length=200, blank=False, unique=True)
     first_name = models.CharField(max_length=50, blank=False)
     last_name = models.CharField(max_length=50, blank=False)
     email = models.CharField(max_length=100, blank=False)
-    cell = models.CharField(max_length=15, blank=True, null=True)
+    cell = models.IntegerField(blank=False, null=True)
     type_of_document = models.CharField(max_length=20, choices=document_types)
-    number_of_document = models.CharField(max_length=15)
+    number_of_document = models.IntegerField(blank=False, null=True)
     roll = models.CharField(max_length=20, choices=role_types)
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return self.username
-
 
 
 class CustomUserManager(BaseUserManager):

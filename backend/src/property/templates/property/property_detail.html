@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Detalles de la propiedad</h1>
+    <h2>{{object.title}} en {{ object.location }}</h2>
+    <p>Tipo de propiedad: {{ object.get_type_of_property_display }}</p>
+    <p>Tiempo de alquiler: {{ object.time_for_rent }} meses</p>
+    <p>Tamaño: {{ object.size }} metros cuadrados</p>
+    <p>Precio de alquiler: ${{ object.rental_price }}</p>
+    <p>Estado: {{ object.get_status_display }}</p>
+    <p>Descripción: {{ object.description }}</p>
+    <img src="{{ object.images.url }}" alt="Imagen de la propiedad">
+    
+    <h2>Características</h2>
+    <p>Número de habitaciones: {{ property_details.num_bedrooms }}</p>
+    <p>Número de baños: {{ property_details.num_bathrooms }}</p>
+    <p>Número de parqueaderos: {{ property_details.parking_spaces }}</p>
+    <p>Tiene jardín: {% if property_details.garden %}Sí{% else %}No{% endif %}</p>
+    <p>Tiene piscina: {% if property_details.pool %}Sí{% else %}No{% endif %}</p>
+    <p>Esta amueblado: {% if property_details.furnished %}Sí{% else %}No{% endif %}</p>
+
+</div>
+{% endblock content %}

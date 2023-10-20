@@ -1,0 +1,32 @@
+<div class="container">
+    <form method="GET" action="{% url 'property:search' %}" class="property-search-form" role="search" >
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="mdi mdi-home-search"></i></span>
+                    </div>
+                        <input class="form-control" type="search" name="q" placeholder="Ingresa la propiedad deseada" value="{{ request.GET.q }}" aria-label="Search">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="mdi mdi-home-city"></i></span>   
+                    </div>
+                    <select class="form-control" name="property_type" id="property_type">
+                        <option value="">Tipo de propiedad</option>
+                        <option value="apartment">Apartamento</option>
+                        <option value="house">Casa</option>
+                        <option value="room">Habitación</option>
+                        <option value="office">Oficina</option>
+                        <option value="studio">Aparta-Estudio</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-block font-weight-bold">Buscar</button>
+            </div>
+        </div>
+    </form>
+</div>

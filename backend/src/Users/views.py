@@ -7,15 +7,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
-from Users.forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileEditForm
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import ProfileEditForm
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import PasswordChangeForm
 
 
-def home(request):
-    return render(request, 'InformacionEmpresa/home.html')
+def about(request):
+    return render(request, 'info/about.html')
 
 @login_required
 def properties(request):
@@ -60,7 +59,7 @@ def register_view(request):
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('property:list')
         else:
             data['form'] = user_creation_form
 
@@ -99,7 +98,7 @@ def notification_list(request):
         'notifications': notifications,
     }
 
-    return render(request, 'Otros/notify.html', context)
+    return render(request, 'notification/notify.html', context)
 
 class CustomPasswordChangeView(PasswordChangeView):
     form_class = PasswordChangeForm  # Asegúrate de usar el formulario PasswordChangeForm
