@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Eliminación de Cuenta</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmar Eliminación de Cuenta</h1>
+        <p>¿Seguro que deseas eliminar tu cuenta? Esta acción no se puede deshacer.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar Cuenta</button>
+        </form>
+    </div>
+</body>
+</html>

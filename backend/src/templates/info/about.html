@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Bienvenido a I Rent You</h1>
+            <p>
+                Somos una empresa dedicada a proporcionar soluciones de alquiler de propiedades de calidad para nuestros clientes. Desde casas y apartamentos hasta espacios comerciales, ofrecemos una amplia variedad de opciones de alquiler para satisfacer todas sus necesidades.
+            </p>
+            <h2>Nuestra Misión</h2>
+            <p>
+                Nuestra misión es proporcionar a nuestros clientes acceso a propiedades de alta calidad y garantizar una experiencia de alquiler sin complicaciones. Nos esforzamos por ser líderes en la industria y establecer relaciones sólidas con propietarios e inquilinos.
+            </p>
+            <h2>Nuestra Visión</h2>
+            <p>
+                Queremos ser reconocidos como la mejor plataforma de alquiler, conocida por nuestro compromiso con la satisfacción del cliente y la integridad en todos nuestros tratos. Buscamos innovar constantemente y expandir nuestra presencia en el mercado.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/arriendo.jpg' %}" alt="Imagen de la empresa" class="img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock %}

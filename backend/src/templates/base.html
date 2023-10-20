@@ -18,41 +18,71 @@
 
   </head>
 <body>
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">
-          {% load static %}
-          <img
-            src="{% static '#' %}"
-            alt=""
-            width="30"
-            height="24"
-            class="d-inline-block align-text-top"
-          />
-          <strong>I Rent You</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+ <header> 
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        {% load static %}
+        <img
+          src="{% static '#' %}"
+          alt=""
+          width="30"
+          height="24"
+          class="d-inline-block align-text-top"
+        />
+        <strong>I Rent You</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item"> 
+            <a class="nav-link " href="{% url 'home' %}">Inicio</a>
+          </li> 
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'property:list' %}">Propiedades</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'property:create' %}">Crear Propiedad</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'notify' %}">Notificaciones</a>
+          </li>
+            
+          {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="{% url 'perfil' %}">
+                        <i class="fas fa-user"></i> {{ user.username }}
+                    </a>
+                </li>
+                <li class="nav-item red-bg">
+                  <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                </li>
+          {% else %}
             <li class="nav-item">
-              <a class="nav-link " href="{% url 'home' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'property:list' %}">Properties</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'property:create' %}">Create Properties</a>
+              <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
             </li>
 
-          </ul>
-        </div>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+            </li>
+            
+
+            
+          
+          
+          {% endif %}
+            
+
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-  </header>
+</header>
 
   {% block content %}
 

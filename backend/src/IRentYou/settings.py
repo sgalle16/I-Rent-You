@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -47,6 +46,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
 
     "property",
+    "Users",
 ]
 
 MIDDLEWARE = [
@@ -57,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
 ]
 
 ROOT_URLCONF = "IRentYou.urls"
@@ -147,7 +148,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
-AUTH_USER_MODEL = "property.User"
-
+    
+AUTH_USER_MODEL = "Users.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_URL= "login"

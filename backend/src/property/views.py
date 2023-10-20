@@ -91,7 +91,7 @@ class PropertyCreateView(CreateView):
     form_class = PropertyForm
     model = Property
     template_name = 'property/property_create.html'
-    success_url = reverse_lazy('property-list')
+    success_url = reverse_lazy('property:list')
 
     def form_valid(self, form):
         # Asigna el usuario(lessor) actual como propietario al crear la propiedad

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Todas las notificaciones</h2>
+    <ul>
+        {% for notification in notifications %}
+            <li>
+                <strong>{{ notification.actor }}:</strong> {{ notification.description }}
+                <br>
+                <small>{{ notification.timestamp }}</small>
+            </li>
+        {% empty %}
+            <li>No tienes notificaciones.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

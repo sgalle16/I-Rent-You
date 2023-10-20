@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<h3 style="color: #007BFF; font-size: 24px; font-weight: bold; text-align: center;">Inicio de Sesión</h3>
+
+
+<br>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="card mx-auto" style="width: 30rem;">
+        <div class="card-body">
+            <h5 class="card-title">Ingrese sus credenciales</h5>
+            {{ form | crispy }}
+            <button class="btn btn-sm btn-primary float-end" type="submit">Iniciar Sesión</button>
+        </div>
+    </div>
+</form>
+
+<a href="{% url 'property:list' %}" class="card-link">Inicio</a>
+<a href="{% url 'register' %}" class="card-link">Registrarse</a>
+
+{% endblock %}
