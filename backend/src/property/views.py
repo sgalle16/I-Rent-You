@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'pages/home.html')
 
 
 class PropertySearchListView(ListView):
@@ -153,4 +153,4 @@ class PropertyUpdateView(UpdateView):
 class PropertyDeleteView(DeleteView):
     model = Property
     template_name = 'property/property_delete.html'
-    success_url = '/'
+    success_url = reverse_lazy('property:list')

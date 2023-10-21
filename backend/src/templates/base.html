@@ -49,25 +49,25 @@
             <a class="nav-link" href="{% url 'property:create' %}">Crear Propiedad</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'notify' %}">Notificaciones</a>
+            <a class="nav-link" href="{% url 'user:notify' %}">Notificaciones</a>
           </li>
             
           {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="{% url 'perfil' %}">
+                    <a class="nav-link text-danger" href="{% url 'user:profile' %}">
                         <i class="fas fa-user"></i> {{ user.username }}
                     </a>
                 </li>
                 <li class="nav-item red-bg">
-                  <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                  <a class="nav-link" href="{% url 'user:logout' %}">Salir</a>
                 </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+              <a class="nav-link" href="{% url 'user:login' %}">Ingresar</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+              <a class="nav-link" href="{% url 'user:register' %}">Registrarse</a>
             </li>
             
 

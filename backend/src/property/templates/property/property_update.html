@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container">
@@ -9,12 +10,12 @@
         
         <div class="form-section">
             <h3>Detalles de la Propiedad</h3>
-            {{ form.as_p }}
+            {{ form|crispy }}
         </div>
         
         <div class="form-section">
             <h3>Características</h3>
-            {{ feature_form.as_p }}
+            {{ feature_form|crispy }}
         </div>
         
         <button type="submit" class="btn btn-primary">Guardar</button>

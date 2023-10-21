@@ -28,7 +28,7 @@ def login_view(request):
             user = form.get_user()
             # login(request, user)
             # Redirigir a una página después de iniciar sesión, por ejemplo:
-            return ('perfil')
+            return ('profile')
 
     else:
         form = AuthenticationForm()
