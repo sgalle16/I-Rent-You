@@ -3,6 +3,7 @@ from django.urls import path
 from Users.views import (register_view, login_view, CustomPasswordChangeView, about,
                          logoutaccount, view_and_edit_profile, confirm_delete_account, notification_list)
 
+from property.views import LessorPropertyListView
 
 app_name = 'Users'
 
@@ -16,5 +17,7 @@ urlpatterns = [
     path('change-password/', CustomPasswordChangeView.as_view(), name='password_change'),
     path('notification/', notification_list, name='notify'),
     path("about/", about, name="about"),
+    
+    path("lessor/", LessorPropertyListView.as_view(), name="lessor-properties"),
 
 ]

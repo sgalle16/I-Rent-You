@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section-padding">
+    <div class="container">
+        {% if request.user.is_authenticated and request.user.roll == 'lessor' %}
+        <div class="row">
+            <section class="section" id="property-list">
+                <div class="section-title text-center mb-5">
+                    <h1>Tus Propiedades</h1>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for property in properties %}
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="{{ property.images.url }}" class="card-img-top img-fluid" alt="Imagen de la propiedad" style="max-height: 400px;" />
+                            <div class="card-body">
+                                <h2 class="card-title">{{ property.title }}</h2>
+                                <p class="card-text"><strong>Ubicación:</strong> {{ property.location }}</p>
+                                <p class="card-text"><strong>Precio de Alquiler:</strong> {{ property.rental_price }}</p>
+                                <p class="card-text"><strong>Disponibilidad:</strong> {{ property.get_status_display }}</p>
+                                <a href="{% url 'property:detail' pk=property.id %}" class="btn btn-primary">Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="col-12">No se encontraron propiedades.</p>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+                {% include 'property/snippet/paginator.html' %}
+        {% else %}
+        <h5>No tienes propiedades actualmente</h5>
+            <a href="{% url 'property:create' %}" class="btn btn-primary">Añadir  propiedad</a>
+
+        {% endif %}
+    </div>
+</section>
+
+{% endblock content %}
