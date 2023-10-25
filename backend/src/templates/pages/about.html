@@ -6,7 +6,15 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <h1>Bienvenido a I Rent You</h1>
+            <h1>Bienvenido a 
+                <a class="navbar-brand logo" href="{% url 'home' %}">
+                    <img src="{% static 'images/logo_dark.png' %}"
+                    alt="logo I Rent You"
+                    class="logo-navbar"
+                    />
+                    <strong class="logo-text">I RENT YOU</strong>
+                </a>
+            </h1>
             <p>
                 Somos una empresa dedicada a proporcionar soluciones de alquiler de propiedades de calidad para nuestros clientes. Desde casas y apartamentos hasta espacios comerciales, ofrecemos una amplia variedad de opciones de alquiler para satisfacer todas sus necesidades.
             </p>

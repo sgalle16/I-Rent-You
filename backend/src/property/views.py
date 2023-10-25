@@ -80,6 +80,7 @@ class PropertyListView(ListView):
 class PropertyDetailView(DetailView):
     model = Property
     template_name = 'property/property_detail.html'
+    context_object_name = 'property'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

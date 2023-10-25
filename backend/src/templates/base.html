@@ -18,70 +18,63 @@
 
   </head>
 <body>
- <header> 
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<header> 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home' %}">
+      <a class="navbar-brand logo-container" href="{% url 'home' %}">
         {% load static %}
-        <img
-          src="{% static '#' %}"
-          alt=""
-          width="30"
-          height="24"
-          class="d-inline-block align-text-top"
+        <img src="{% static '#' %}"
+          alt="logo I Rent You"
+          class="logo-navbar"
         />
-        <strong>I Rent You</strong>
+        <strong class="logo-text">I RENT YOU</strong>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item"> 
-            <a class="nav-link " href="{% url 'home' %}">Inicio</a>
-          </li> 
-
+      <div class="collapse navbar-collapse justify-content-md-center" id="navbarResponsive">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 margin-auto"> 
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'property:list' %}">Propiedades</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'property:create' %}">Crear Propiedad</a>
+            <a class="nav-link" href="{% url 'user:about' %}">Acerca de nosotros</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:notify' %}">Notificaciones</a>
-          </li>
-            
-          {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link text-danger" href="{% url 'user:profile' %}">
-                        <i class="fas fa-user"></i> {{ user.username }}
-                    </a>
-                </li>
-                <li class="nav-item red-bg">
-                  <a class="nav-link" href="{% url 'user:logout' %}">Salir</a>
-                </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ request.user.username }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownPortfolio">
+                {% if request.user.roll == 'lessor' %}
+                  <li><a class="dropdown-item" href="{% url 'user:notify' %}">Notificaciones</a></li>
+                  <li><a class="dropdown-item" href="{% url 'property:create' %}">Crear Propiedad</a></li>
+                  <li><a class="dropdown-item" href="{% url 'user:lessor-properties' %}">Mis Propiedad</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'user:profile' %}">Perfil</a></li>
+                <li><a class="dropdown-item" href="{% url 'user:password_change' %}">Cambiar Contraseña</a></li>
+                <li><a class="dropdown-item" href="{% url 'user:logout' %}">Salir</a></li>
+              </ul>
+            </li>
+        
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'user:login' %}">Ingresar</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'user:register' %}">Registrarse</a>
-            </li>
-            
-
-            
-          
-          
+          </ul>
+            <div class="my-2 my-lg-0 ">
+                <li class="list-inline-item">
+                  <a class="btn btn-outline-primary btn" href="{% url 'user:login' %}"><i class="mdi mdi-login"></i> Ingresar</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="btn btn-primary btn" href="{% url 'user:register' %}"><i class="mdi mdi-shield-account"></i> Registrarse</a>
+                </li>
+            </div>
           {% endif %}
-            
-
-        </ul>
+        
       </div>
     </div>
   </nav>
-
 </header>
 
   {% block content %}
