@@ -22,6 +22,27 @@ h2,h3,h4 {
     color: #000000;
 }
 
+/*Logo*/
+.logo-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    margin-left: 120px; 
+}
+
+.logo-navbar {
+    width: 120px; 
+    height: auto; 
+    margin-left: 10px; 
+}
+
+.logo-text {
+    width: 150px; 
+    font-size: 22px; 
+    font-weight: bold; 
+    text-transform: uppercase;
+    margin-bottom: 20px; 
+
+}
 
 /* Navbar */
 nav.navbar {

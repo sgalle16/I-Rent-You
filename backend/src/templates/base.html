@@ -23,11 +23,7 @@
     <div class="container-fluid">
       <a class="navbar-brand logo-container" href="{% url 'home' %}">
         {% load static %}
-        <img src="{% static '#' %}"
-          alt="logo I Rent You"
-          class="logo-navbar"
-        />
-        <strong class="logo-text">I RENT YOU</strong>
+        <img src="{% static 'images/logo/logo.jpg' %}" alt="logo I Rent You"class="logo-navbar"/>
       </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
