@@ -4,13 +4,15 @@ from django.contrib.auth import views as auth_views
 
 from django.contrib import admin
 from django.urls import path, include
-from property import views as propertyViews
+from Users import views as userViews
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', propertyViews.home, name='home'),
+    
+    path('', userViews.home, name='home'),
+    path('about/', userViews.about, name='about'),
 
     # URLs from the `Users` app
     path('', include('Users.urls', namespace='user')),

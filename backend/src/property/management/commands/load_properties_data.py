@@ -1,30 +1,10 @@
 from django.core.management.base import BaseCommand
 from property.models import Property, PropertyFeature
 import json
-import time
 import os
-import openai
-import requests
-from PIL import Image
-from io import BytesIO
-from dotenv import load_dotenv, find_dotenv
-
-
-_ = load_dotenv('../../.env')
-openai.api_key = os.environ['openAI_api_key']
-
-
-def fetch_image(url):
-    response = requests.get(url)
-    response.raise_for_status()
-
-    # Convert the response content into a PIL Image
-    image = Image.open(BytesIO(response.content))
-    return (image)
-
 
 class Command(BaseCommand):
-    help = 'Generate images & Load properties from properties_complete.json into the property model and the features to the property feature model'
+    help = 'Load properties from properties_complete.json into the property model and feautures'
 
     def handle(self, *args, **kwargs):
         # Load properties from JSON file
@@ -32,7 +12,7 @@ class Command(BaseCommand):
             properties_data = json.load(file)
 
         # Initialize a counter for added properties
-        cont = 0
+        count = 0
 
         # Loop through each property in the JSON data
         for property_data in properties_data:
@@ -40,14 +20,9 @@ class Command(BaseCommand):
             existing_property = Property.objects.filter(
                 title=property_data['title']).first()
 
-            # This code block checks if a property with the same title already exists in the database.
-            # If `existing_property` is `None`, it means that there is no property with the same title
-            # in the database. In this case, a new property is created using the
-            # `Property.objects.create()` method. The property's attributes are set using the
-            # corresponding values from the `property_data` dictionary.
             if existing_property is None:
                 # Property doesn't exist, create a new one
-                new_property = Property.objects.create(
+                new_property = Property(
                     title=property_data['title'],
                     description=property_data['description'],
                     images=f'media/property/property_images/{property_data["title"]}.jpg',
@@ -59,18 +34,16 @@ class Command(BaseCommand):
                     rental_price=property_data['rental_price'],
                     status=property_data['status']
                 )
+                new_property.save()
+
                 # Create an instance of PropertyFeature associated with the new Property
-                # This block of code is responsible for creating and saving a `PropertyFeature` object
-                # associated with a new `Property` object.
                 property_feature_data = property_data.get('property_feature')
                 if property_feature_data:
                     property_feature = PropertyFeature(
                         property=new_property,
                         num_bedrooms=property_feature_data.get('num_bedrooms'),
-                        num_bathrooms=property_feature_data.get(
-                            'num_bathrooms'),
-                        parking_spaces=property_feature_data.get(
-                            'parking_spaces'),
+                        num_bathrooms=property_feature_data.get('num_bathrooms'),
+                        parking_spaces=property_feature_data.get('parking_spaces'),
                         garden=property_feature_data.get('garden'),
                         pool=property_feature_data.get('pool'),
                         backyard=property_feature_data.get('backyard'),
@@ -78,23 +51,10 @@ class Command(BaseCommand):
                     )
                     property_feature.save()
 
-                # Generate and save the image
-                response = openai.Image.create(
-                    prompt=f"Alguna vista de la propiedad desde el exterior {property_data['title']}",
-                    n=1,
-                    size="256x256"
-                )
-                image_url = response['data'][0]['url']
-                img = fetch_image(image_url)
-                img.save(
-                    f'media_root/media/property/property_images/{property_data["title"]}.jpg')
-                new_property.images = f'media/property/property_images/{property_data["title"]}.jpg'
-                new_property.save()
-                time.sleep(20)
-                cont += 1
+                count += 1
             else:
                 # Property already exists, you can choose to update its information if needed
                 pass
 
         self.stdout.write(self.style.SUCCESS(
-            f'Successfully added {cont} properties, image and features to the database'))
+            f'Successfully added {count} properties and features to the database'))

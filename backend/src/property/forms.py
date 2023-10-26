@@ -6,7 +6,7 @@ class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = ['title', 'type_of_property', 'time_for_rent', 'location', 'address', 'size',
-                  'rental_price', 'status', 'images', 'owner', 'description']
+                  'rental_price', 'status', 'images', 'description']
         labels = {
             'title': 'Titulo',
             'type_of_property': 'Tipo de Propiedad',
@@ -17,7 +17,6 @@ class PropertyForm(forms.ModelForm):
             'rental_price': 'Precio de Alquiler',
             'status': 'Disponibilidad',
             'images': 'Imágenes',
-            'owner': 'Propietario',
             'description': 'Descripción'
         }
         widgets = {

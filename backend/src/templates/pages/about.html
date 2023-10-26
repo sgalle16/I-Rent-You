@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <h1>Bienvenido a I Rent You</h1>
+            <h1>Bienvenido a 
+                <a class="navbar-brand logo" href="{% url 'home' %}">
+                    <img src="{% static 'images/logo/logo_dark_1.jpg' %}"
+                    alt="logo I Rent You"
+                    class="logo-text"
+                    />
+                </a>
+            </h1>
             <p>
                 Somos una empresa dedicada a proporcionar soluciones de alquiler de propiedades de calidad para nuestros clientes. Desde casas y apartamentos hasta espacios comerciales, ofrecemos una amplia variedad de opciones de alquiler para satisfacer todas sus necesidades.
             </p>
@@ -20,7 +25,26 @@
             </p>
         </div>
         <div class="col-md-6">
-            <img src="{% static 'images/arriendo.jpg' %}" alt="Imagen de la empresa" class="img-fluid">
+            <img src="{% static 'images/arriendo.jpg' %}" alt="Imagen de la empresa" class="img-fluid rounded shadow-lg">
+        </div>
+    </div>
+</div>
+
+    <hr class="featurette-divider">
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12 mb-4 text-center">
+
+            <img src="{% static 'images/logo/logo_color_b.jpg' %}" alt="Logo de IRentYou" >
+            <section class="section-padding text-center">
+                <h2 class="mt-5" >Simplificando la Experiencia de Alquiler</h2>
+                <p class="mb-2">En IRentYou, estamos comprometidos a hacer que el proceso de alquiler sea más fácil y eficiente para ti.</p>
+                <p class="mb-4">Conéctate con propietarios, encuentra tu hogar ideal y administra tus pagos de manera transparente.</p>
+                <button type="button" class="btn btn-primary">Contáctanos</button>
+                <button type="button" class="btn btn-outline-primary">Leer más</button>
+            </section>
         </div>
     </div>
 </div>

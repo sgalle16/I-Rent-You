@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<main>
+   <section class="section-padding">
+        <div class="container mt-5">
+            {% if request.user.is_authenticated and request.user.roll == 'lessor' %}
+            <div class="row">
+                <section class="section" id="property-list">
+
+                    <div class="section-title text-center mb-5">
+                        <h2 class="pb-2 border-bottom">Tus propiedades</h2>
+                    </div>
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        {% for object in properties %}
+                            {% include 'snippet/property_card_user.html' with property=object %}
+
+                        {% empty %}
+
+                        <h5>No tienes propiedades actualmente</h5>
+                            <a href="{% url 'property:create' %}" class="btn btn-primary">Añadir propiedad</a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+            </div>
+                    {% include 'property/snippet/paginator.html' %}
+            {% else %}
+            <h5>Login</h5>
+                <a href="{% url 'user:login' %}" class="btn btn-primary">Iniciar sesión</a>
+
+            {% endif %}
+        </div>
+    </section>
+
+
+</main>
+  
+{% endblock content %}

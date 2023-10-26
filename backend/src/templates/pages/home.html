@@ -1,11 +1,82 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
 
-<div class=container-fluid>
-
-</div>
-
-  {% include 'property/carousel_main.html' %}
-
+<main>
+    {% include 'property/carousel_main.html' %}
 
 
+  <div class="container marketing">
+
+    <!--
+  
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Heading</h2>
+        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Heading</h2>
+        <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+        <h2 class="fw-normal">Heading</h2>
+        <p>And lastly this, the third column of representative placeholder content.</p>
+        <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div>
+    </div>
+    
+    -->
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+        <div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Transformando la Experiencia de Alquiler. <span class="text-body-secondary">Descubre la revolución en alquileres.</span></h2>
+        <p class="lead">Bienvenido a una nueva era en alquiler de propiedades. Nuestra plataforma, IRentYou, está diseñada para cambiar la forma en que experimentas el alquiler de propiedades. Imagina un lugar donde encontrar tu hogar ideal es más fácil que nunca.</p>
+    </div>
+    <div class="col-md-5">
+        <img src="{% static 'img/home/1.jpg' %}" alt="Imagen 1 del proyecto" width="500" height="500">
+    </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Experiencia de Alquiler Simplificada. <span class="text-body-secondary">Descubre la comodidad y eficiencia.</span></h2>
+        <p class="lead">En IRentYou, hemos creado una plataforma que hace que alquilar sea más sencillo y eficiente que nunca. No solo te conectamos con propietarios y arrendatarios, sino que también ofrecemos herramientas para simplificar tu búsqueda, administración de pagos y facilitar una comunicación transparente.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+        <img src="{% static 'images/logo/1080/logo_color_b.png' %}" alt="Imagen 2 del proyecto" width="500" height="500">
+    </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">Tu Nueva Forma de Encontrar Hogar. <span class="text-body-secondary">Una experiencia que marcará la diferencia.</span></h2>
+        <p class="lead">¿Cansado de buscar propiedades de alquiler? Con IRentYou, tu búsqueda se vuelve más precisa. Filtra propiedades según tus necesidades, comparte mensajes directos con los propietarios y disfruta de la comodidad que mereces en tu proceso de alquiler.</p>
+    </div>
+    <div class="col-md-5">
+        <img src="{% static 'img/home/3.jpg' %}" alt="Imagen 3 del proyecto" width="500" height="500">
+    </div>
+    </div>
+
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+</main>
 {% endblock content %}

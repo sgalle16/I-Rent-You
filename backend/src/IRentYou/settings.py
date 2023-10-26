@@ -151,4 +151,6 @@ SITE_ID = 1
     
 AUTH_USER_MODEL = "Users.User"
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_URL= "login"
+
+LOGIN_URL= "user:login"
+LOGIN_REDIRECT_URL = '/'

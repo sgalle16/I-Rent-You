@@ -1,0 +1,40 @@
+{%load static%}
+
+{% block style %}
+    <link href='{% static "css/property_card.css" %}' rel="stylesheet">
+{% endblock %}
+<div class="col-lg-4 col-md-4">
+    <div class="card card-list ">
+        {% if property.id %}
+            <div class="img-box">
+                <a href="{% url 'property:detail' pk=property.id %}">
+                    {% if property.images.url %}
+                        <img src="{{ property.images.url }}" class="card-img-top" alt="Imagen de la propiedad">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ property.title }}</h5>
+                <p class="card-subtitle text-muted"><i class="mdi mdi-home-map-marker"></i> {{ property.address|truncatewords:20 }}</p>
+                <h2 class="text-success mb-0 mt-3">
+                    ${{ property.rental_price|floatformat:2 }} 
+                </h2>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="d-flex justify-content-between">
+                    <span>
+                        <i class="mdi mdi-bed"></i> Alcobas: <strong>{{ property.features.num_bedrooms }}</strong>
+                    </span>
+                    <span>
+                        <i class="mdi mdi-scale-bathroom"></i> Baños: <strong>{{ property.features.num_bathrooms }}</strong>
+                    </span>
+                    <span>
+                        <i class="mdi mdi-move-resize-variant"></i> Área: <strong>{{ property.size }} m²</strong>
+                    </span>
+                </div>
+            </div>
+            <a href="{% url 'property:detail' pk=property.id %}" class="btn btn-outline-primary">Detalles</a>
+
+        {% endif %}
+    </div>
+</div>

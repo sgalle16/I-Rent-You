@@ -10,6 +10,8 @@ from .forms import CustomUserCreationForm, ProfileEditForm
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import views as auth_views
 
+def home(request):
+    return render(request, 'pages/home.html')
 
 def about(request):
     return render(request, 'pages/about.html')

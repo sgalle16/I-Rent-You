@@ -1,24 +1,187 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Detalles de la propiedad</h1>
-    <h2>{{object.title}} en {{ object.location }}</h2>
-    <p>Tipo de propiedad: {{ object.get_type_of_property_display }}</p>
-    <p>Tiempo de alquiler: {{ object.time_for_rent }} meses</p>
-    <p>Tamaño: {{ object.size }} metros cuadrados</p>
-    <p>Precio de alquiler: ${{ object.rental_price }}</p>
-    <p>Estado: {{ object.get_status_display }}</p>
-    <p>Descripción: {{ object.description }}</p>
-    <img src="{{ object.images.url }}" alt="Imagen de la propiedad">
-    
-    <h2>Características</h2>
-    <p>Número de habitaciones: {{ property_details.num_bedrooms }}</p>
-    <p>Número de baños: {{ property_details.num_bathrooms }}</p>
-    <p>Número de parqueaderos: {{ property_details.parking_spaces }}</p>
-    <p>Tiene jardín: {% if property_details.garden %}Sí{% else %}No{% endif %}</p>
-    <p>Tiene piscina: {% if property_details.pool %}Sí{% else %}No{% endif %}</p>
-    <p>Esta amueblado: {% if property_details.furnished %}Sí{% else %}No{% endif %}</p>
+<section class="section-padding">
+    <div class="container">
+        <div class="section-title text-center mb-5">
+            <h2 class="pb-2 border-bottom">Detalles de la propiedad</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
 
-</div>
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Carrusel de imágenes -->
+                        <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-interval="5500">
+                                    <img src="{{ property.images.url }}" alt="{{ property.title }}" class="w-100">
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class ="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="property-info">
+                    <h1>{{ property.title }}</h1>
+
+                    <div class="list-icon">
+                        <i class="mdi mdi-home-map-marker"></i>
+                        <strong>Dirección:</strong>
+                        <p class="mb-0">{{ property.address }}</p>
+                    </div>
+
+                    <div class="list-icon">
+                        <i class="mdi mdi-home"></i>
+                        <strong>Tipo de propiedad:</strong>
+                        <p class="mb-0">{{ property.get_type_of_property_display }}</p>
+                    </div>
+
+                    <div class="list-icon">
+                        <i class="mdi mdi-clock"></i>
+                        <strong>Tiempo de alquiler:</strong>
+                        <p class="mb-0">{{ property.time_for_rent }} meses</p>
+                    </div>
+
+                    <div class="list-icon">                     
+                        {% if object.status == 'rented' %}
+                            <i class="mdi mdi-check-circle"></i>
+                        {% elif object.status == 'available' %}
+                            <i class="mdi mdi-home"></i>
+                        {% elif object.status == 'pending' %}
+                            <i class="mdi mdi-alert"></i>
+                        {% else %}
+                            <i class="mdi mdi-alert-circle"></i>
+                        {% endif %}
+                        <strong>Estado:</strong>
+                        <p class="mb-0">{{ object.get_status_display }}
+                        </p>
+                    </div>        
+
+                    <div class="list-icon">
+                        <i class="mdi mdi-currency-usd"></i>
+                        <strong>Precio de alquiler:</strong>
+                        <p class="mb-0">${{ property.rental_price }}</p>
+                    </div>
+                </div>
+                <!-- --------------- -->
+                <div class="card">
+                    <div class="card padding-card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Detalles</h5>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-sofa"></i>
+                                        <strong>Habitaciones:</strong>
+                                        <p class="mb-0">{{ property_details.num_bedrooms }} Habitaciones</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-hot-tub"></i>
+                                        <strong>Baños:</strong>
+                                        <p class="mb-0">{{ property_details.num_bathrooms }} Baños</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-move-resize-variant"></i>
+                                        <strong>Área:</strong>
+                                        {% if property.size %}
+                                        <p class="mb-0">{{ property.size }} m²</p>
+                                        {% else %}
+                                        <p class="mb-0">No especificada</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-sofa"></i>
+                                        <strong>Amueblado:</strong>
+                                        {% if object.furnished %}
+                                        <p class="mb-0">{{ object.furnished }}</p>
+                                        {% else %}
+                                        <p class="mb-0">No</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-car-multiple"></i>
+                                        <strong>Parqueadero:</strong>
+                                        {% if property_details.parking_spaces %}
+                                        <p class="mb-0">{{ property_details.parking_spaces }}</p>
+                                        {% else %}
+                                        <p class="mb-0">No</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-pool"></i>
+                                        <strong>Pool:</strong>
+                                        {% if property_details.pool %}
+                                        <p class="mb-0">Si</p>
+                                        {% else %}
+                                        <p class="mb-0">No</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="list-icon">
+                                        <i class="mdi mdi-flower-tulip"></i>
+                                        <strong>Jardín:</strong>
+                                        {% if property_details.garden %}
+                                        <p class="mb-0">Si</p>
+                                        {% else %}
+                                        <p class="mb-0">No</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>Descripción</h3>
+                            <p>{{ object.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Información del propietario de la propiedad -->
+            <div class="col-lg-4 col-md-4">
+                <div class="card sidebar-card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4 border-bottom">Arrendatario de la propiedad</h4>
+                        <!-- ... Información del lessor(owner) ... -->
+                        <p><strong>Dueño:</strong> {{ property.owner }}</p>
+
+                        {% if request.user.is_authenticated or request.user.roll == 'tenant' %}
+                            <div class="mt-4">
+                                <h5 class="mb-2">Contacto</h5>
+                                <p>Si deseas alquilar esta propiedad, puedes ponerte en contacto con el dueño:</p>
+                                <a href="#" class="btn btn-primary btn-lg">Contactar al dueño</a>
+                            </div>
+                        {% endif %}   
+                            
+                    </div>    
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 {% endblock content %}

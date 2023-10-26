@@ -24,41 +24,32 @@
 
 
 
+<section class="section-padding">
 
-  </br>
+  <div class="container mt-5">
+    <div class="row">
+      
+      <div class="section-title text-center mb-5">
+        <h2 class="pb-2 border-bottom">Propiedades</h2>
+      </div>
 
-<div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for property in properties %}
+
+            {% include 'property/snippet/property_card.html' %}
 
 
+          {% empty %}
+          <p class="col-12">No se encontraron propiedades.</p>
+        {% endfor %}
+      </div>
 
-  <section class="section" id="property-list">
-    <div class="section-title text-center mb-5">
-      <h1>Lista de Propiedades</h1>
+              {% include 'property/snippet/paginator.html'  %}
+
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      {% for property in properties %}
-        <div class="col mb-4" "mb-4"> 
-          <div class="card" >
-            <img src="{{ property.images.url }}" class="card-img-top img-fluid" alt="Imagen de la propiedad" style="max-height: 400px;" />
-            <div class="card-body">
-              <h2 class="card-title">{{property.title}}</h2>
-              <p class="card-text"><strong>Ubicación:</strong> {{ property.location }}</p>
-              <p class="card-text"><strong>Precio de Alquiler:</strong> {{ property.rental_price }}</p>
-              <p class="card-text"><strong>Disponibilidad:</strong> {{ property.get_status_display }}</p>
-              <a href="{% url 'property:detail' pk=property.id %}" class="btn btn-primary">Detalles</a>
-            </div>
-          </div>
-        </div>
-        {% empty %}
-        <p class="col-12">No se encontraron propiedades.</p>
-      {% endfor %}
-    </div>
+  </div>
+</section>
 
-            {% include 'property/snippet/paginator.html'  %}
-
-  </section>
-
-</div>
 
 
 {% endblock content %}
