@@ -4,9 +4,8 @@
 {% load static %}
 
 <main>
-    </br>
    <section class="section-padding">
-        <div class="container">
+        <div class="container mt-5">
             {% if request.user.is_authenticated and request.user.roll == 'lessor' %}
             <div class="row">
                 <section class="section" id="property-list">

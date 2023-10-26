@@ -37,7 +37,7 @@
             <a class="nav-link" href="{% url 'property:list' %}">Propiedades</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'user:about' %}">Acerca de nosotros</a>
+            <a class="nav-link" href="{% url 'about' %}">Acerca de nosotros</a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
@@ -90,7 +90,7 @@
                             <a href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="{% url 'user:about' %}">About</a>
+                            <a href="{% url 'about' %}">About</a>
                         </li>
                         <li class="list-inline-item">
                             <a href="{% url 'property:list' %}">Property</a>
@@ -99,7 +99,7 @@
                             <a href="p{% url 'property:list' %}">Terms</a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="{% url 'user:about' %}">Contact</a>
+                            <a href="{% url 'about' %}">Contact</a>
                         </li>
                     </ul>
                 </nav>

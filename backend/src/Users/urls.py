@@ -1,7 +1,6 @@
 from django.urls import path
 
-from Users.views import (register_view, login_view, CustomPasswordChangeView, about,
-                         logoutaccount, view_and_edit_profile, confirm_delete_account, notification_list)
+from Users.views import (register_view, login_view, CustomPasswordChangeView, logoutaccount, view_and_edit_profile, confirm_delete_account, notification_list)
 
 from property.views import LessorPropertyListView
 
@@ -16,7 +15,6 @@ urlpatterns = [
     path('profile/confirm-delete-account/', confirm_delete_account, name='confirm-delete-account'),
     path('change-password/', CustomPasswordChangeView.as_view(), name='password_change'),
     path('notification/', notification_list, name='notify'),
-    path("about/", about, name="about"),
     
     path("lessor/", LessorPropertyListView.as_view(), name="lessor-properties"),
 

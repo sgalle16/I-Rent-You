@@ -12,10 +12,6 @@ from Users.mixins import LessorUserMixin, TenantUserMixin
 from .mixins import PropertyLessorMixin
 
 
-def home(request):
-    return render(request, 'pages/home.html')
-
-
 class PropertySearchListView(ListView):
     model = Property
     template_name = 'property/property_list.html'
@@ -48,18 +44,16 @@ class PropertyListView(ListView):
     model = Property
     template_name = 'property/property_list.html'
     context_object_name = 'properties'
+    paginate_by = 9
 
     def get_queryset(self):
         # Obtener todos los objetos de Property
-        queryset = Property.objects.all()
+        queryset = Property.objects.all().order_by("published_date")
 
         return queryset
 
-    paginate_by = 9
-
     def get_context_data(self, **kwargs):
         property_list = list(Property.objects.all())
-        shuffle(property_list)
         # Establece la cantidad de elementos por página
         paginator = Paginator(property_list, self.paginate_by)
         page = self.request.GET.get('page')
@@ -133,7 +127,7 @@ class PropertyUpdateView(PropertyLessorMixin, UpdateView):
     form_class = PropertyForm
     model = Property
     template_name = 'property/property_update.html'
-    success_url = '/'
+    success_url = reverse_lazy('user:lessor-properties')
 
     def dispatch(self, request, *args, **kwargs):
         # Comprueba si el usuario actual es un "lessor" o administrador
@@ -164,21 +158,25 @@ class PropertyUpdateView(PropertyLessorMixin, UpdateView):
 class LessorPropertyListView(LessorUserMixin, ListView):
     model = Property
     template_name = "lessor/index.html"
+    context_object_name = 'properties'  # Nombre de la variable en la plantilla
+    paginate_by = 6
 
     def get_queryset(self, *args, **kwargs):
+        # Filtrar y ordenar las propiedades por fecha de publicación
         queryset = super(LessorPropertyListView, self).get_queryset(**kwargs)
         queryset = queryset.filter(owner=self.get_lessor())
         query = self.request.GET.get("q")
         if query:
             queryset = queryset.filter(Q(title__icontains=query) | Q(
-                description__icontains=query)).order_by("title")
-        return queryset
+                description__icontains=query))
+        return queryset.order_by("published_date")
 
     def get_context_data(self, **kwargs):
-        property_list = list(Property.objects.all())
-        shuffle(property_list)
+        context = super().get_context_data(**kwargs)
+        lessor_properties = self.get_properties().order_by("published_date")
+
         # Establece la cantidad de elementos por página
-        paginator = Paginator(property_list, 3)
+        paginator = Paginator(lessor_properties, self.paginate_by)
         page = self.request.GET.get('page')
 
         try:
@@ -188,9 +186,9 @@ class LessorPropertyListView(LessorUserMixin, ListView):
         except EmptyPage:
             properties = paginator.page(paginator.num_pages)
 
-        context = {
+        context.update({
             'properties': properties
-        }
+        })
         return context
 
 

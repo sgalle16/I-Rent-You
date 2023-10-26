@@ -20,7 +20,7 @@
                     ${{ property.rental_price|floatformat:2 }} {% if property.time_for_rent %}
                     <small>/ Tiempo: {{ property.time_for_rent }} meses</small>{% endif %}
                 </h2>
-                <h4 class="card-text">Estado: {{ object.get_status_display }} {% if object.status == 'rented' %}
+                <h4 class="card-text"><strong>Estado:</strong> {{ object.get_status_display }} {% if object.status == 'rented' %}
                     <i class="mdi mdi-check-circle text-success"></i>
                 {% elif object.status == 'available' %}
                     <i class="mdi mdi-home text-primary"></i>

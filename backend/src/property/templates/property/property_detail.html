@@ -53,11 +53,20 @@
                         <p class="mb-0">{{ property.time_for_rent }} meses</p>
                     </div>
 
-                    <div class="list-icon">
-                        <i class="mdi mdi-checkbox-marked-circle"></i>
+                    <div class="list-icon">                     
+                        {% if object.status == 'rented' %}
+                            <i class="mdi mdi-check-circle"></i>
+                        {% elif object.status == 'available' %}
+                            <i class="mdi mdi-home"></i>
+                        {% elif object.status == 'pending' %}
+                            <i class="mdi mdi-alert"></i>
+                        {% else %}
+                            <i class="mdi mdi-alert-circle"></i>
+                        {% endif %}
                         <strong>Estado:</strong>
-                        <p class="mb-0">{{ property.get_status_display }}</p>
-                    </div>
+                        <p class="mb-0">{{ object.get_status_display }}
+                        </p>
+                    </div>        
 
                     <div class="list-icon">
                         <i class="mdi mdi-currency-usd"></i>

@@ -1,13 +1,18 @@
-from django.http import Http404
 from Users.mixins import LessorUserMixin
+from django.core.exceptions import PermissionDenied
 
-# The `PropertyLessorMixin` class is a mixin that checks if the current user is the owner of an object
-# before allowing access to it.
-class PropertyLessorMixin(LessorUserMixin, object):
-    def get_object(self, *args, **kwargs):
+
+# The PropertyLessorMixin class checks if the current user is the owner of an object and raises an
+# exception if not.
+class PropertyLessorMixin(LessorUserMixin):
+    def check_ownership(self, obj):
         lessor = self.get_lessor()
-        obj = super(PropertyLessorMixin, self).get_object(*args, **kwargs)
         if obj.owner == lessor:
             return obj
         else:
-            raise Http404
+            raise PermissionDenied(
+                "You don't have permission to access this object")
+
+    def get_object(self, *args, **kwargs):
+        obj = super(PropertyLessorMixin, self).get_object(*args, **kwargs)
+        return self.check_ownership(obj)

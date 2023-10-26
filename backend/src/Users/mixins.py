@@ -3,7 +3,9 @@ from property.models import Property
 
 # The `LessorUserMixin` class is a mixin that provides functionality for managing lessor users and
 # their properties.
-class LessorUserMixin(LoginRequiredMixin, object):
+
+
+class LessorUserMixin(LoginRequiredMixin):
     lessor = None
     properties = []
 
@@ -17,7 +19,9 @@ class LessorUserMixin(LoginRequiredMixin, object):
     def can_create_property(self):
         user = self.request.user
         # Verifica si el usuario es un superusuario(opcional) o lessor
-        return user.is_superuser or user.roll == 'lessor'
+        if user.is_superuser or user.roll == 'lessor':
+            return True
+        return False
 
     def get_properties(self):
         lessor = self.get_lessor()
@@ -26,10 +30,13 @@ class LessorUserMixin(LoginRequiredMixin, object):
             properties = Property.objects.filter(owner=lessor)
             self.properties = properties
             return properties
+        return None
 
 # The `TenantUserMixin` class is a mixin that provides a method to get the tenant user from the
 # request.
-class TenantUserMixin(LoginRequiredMixin, object):
+
+
+class TenantUserMixin(LoginRequiredMixin):
     tenant = None
 
     def get_tenant(self):
