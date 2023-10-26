@@ -17,8 +17,7 @@
                 <h5 class="card-title">{{ property.title }}</h5>
                 <p class="card-subtitle text-muted"><i class="mdi mdi-home-map-marker"></i> {{ property.address|truncatewords:20 }}</p>
                 <h2 class="text-success mb-0 mt-3">
-                    ${{ property.rental_price|floatformat:2 }} {% if property.time_for_rent %}
-                    <small>/ Tiempo: {{ property.time_for_rent }} meses</small>{% endif %}
+                    ${{ property.rental_price|floatformat:2 }} 
                 </h2>
             </div>
             <div class="card-footer text-muted">

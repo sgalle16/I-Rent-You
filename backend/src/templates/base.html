@@ -82,15 +82,67 @@
       
   {% endblock content %}
 
-  <footer class="footer mt-auto py-3 bg-dark">
-      <section class="pt-4 pb-4 text-center">
+</br>
 
-          <div class="mt-0 mb-0"">
-              <p class="text-light">Copyright © 2023 - I Rent You. Todos los derechos reservados.</p>
-          </div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="nav-footer">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url 'user:about' %}">About</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url 'property:list' %}">Property</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="p{% url 'property:list' %}">Terms</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="{% url 'user:about' %}">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="footer-social">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="mdi mdi-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="mdi mdi-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="mdi mdi-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <i class="mdi mdi-linkedin" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-      </section>
-  </footer>
+                <div class="copyright-footer">
+                    <p class="copyright color-text-a">
+                        Copyright © 2023 - 
+                        <span class="color-a">I Rent You</span> Todos los derechos reservados.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 </body>
