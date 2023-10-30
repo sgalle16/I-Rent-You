@@ -18,7 +18,15 @@
                 {{ form|crispy }}
             </div>
         </div>
-        
+         <!-- Carga de Imágenes -->
+        <div class="card mb-4">
+            <div class="card-header">
+                Carga de Imágenes de tu actual propiedad 
+            </div>
+            <div class="card-body">
+                {{ images_form.images  }}  
+            </div>
+        </div>
         <!-- Características de la Propiedad -->
         <div class="card mb-4">
             <div class="card-header">
@@ -27,7 +35,7 @@
             <div class="card-body">
                 {{ feature_form|crispy }}
             </div>
-        </div>
+        </div>  
 
         <button type="submit" class="btn btn-success btn-block">{{ view_type|title }} Propiedad</button>
     </form>

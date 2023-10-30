@@ -1,12 +1,13 @@
 from django import forms
-from .models import Property, TIME_RENT, PropertyFeature
+from .models import Property, PropertyFeature, PropertyImage
+from .custom_fields import MultipleFileField
 
 
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
         fields = ['title', 'type_of_property', 'time_for_rent', 'location', 'address', 'size',
-                  'rental_price', 'status', 'images', 'description']
+                  'rental_price', 'status', 'description']
         labels = {
             'title': 'Titulo',
             'type_of_property': 'Tipo de Propiedad',
@@ -16,7 +17,6 @@ class PropertyForm(forms.ModelForm):
             'size': 'Tamaño',
             'rental_price': 'Precio de Alquiler',
             'status': 'Disponibilidad',
-            'images': 'Imágenes',
             'description': 'Descripción'
         }
         widgets = {
@@ -42,3 +42,18 @@ class PropertyFeatureForm(forms.ModelForm):
             'pool': 'Pscina',
             'furnished': 'Amueblado',
         }
+
+
+class PropertyImageForm(forms.ModelForm):
+    class Meta:
+        model = PropertyImage
+        fields = ['images', 'is_main_image']
+        labels = {
+            'images': 'Imágenes',
+            'is_main_image': 'Imagen Principal',
+        }
+        widgets = {
+            'is_main_image': forms.CheckboxInput(),
+        }
+
+    images = MultipleFileField()
