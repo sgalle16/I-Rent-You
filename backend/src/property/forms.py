@@ -57,3 +57,12 @@ class PropertyImageForm(forms.ModelForm):
         }
 
     images = MultipleFileField()
+
+    # Limpia los datos del campo 'images',
+    # si el campo está vacío, se permite que esté en blanco.
+
+    def clean_images(self):
+        images = self.cleaned_data.get('images')
+        if not images:
+            return None  # Permite que el campo esté vacío
+        return images

@@ -1,4 +1,3 @@
-from random import shuffle
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
@@ -110,18 +109,13 @@ class PropertyCreateView(LessorUserMixin, CreateView):
                 feature.property = self.object  # 'self.object' contiene la propiedad recién creada
                 feature.save()
 
-            # Procesa el formulario de imágenes
-            images_form = PropertyImageForm(self.request.POST, self.request.FILES)
+            # Guarda y procesa el formulario de imágenes
+            images_form = PropertyImageForm(
+                self.request.POST, self.request.FILES)
             if images_form.is_valid():
-                """images_form = self.request.FILES.getlist('images')
-                image = images_form.save(commit=False)
-
-                for image in images_form.cleaned_data['images']:
-                    if image:
-                        PropertyImage.objects.create(property=self.object, images=image,)"""
-                images = [PropertyImage(property=self.object, images=image) for image in images_form.cleaned_data['images'] if image]
+                images = [PropertyImage(property=self.object, images=image)
+                          for image in images_form.cleaned_data['images'] if image]
                 PropertyImage.objects.bulk_create(images)
-
 
             return response
         else:
@@ -159,7 +153,11 @@ class PropertyUpdateView(PropertyLessorMixin, UpdateView):
         if feature_form.is_valid():
             feature_form.save()
 
-        # Guarda las imágenes de la propiedad
+        # Elimina imágenes marcadas para eliminación
+        images_to_delete = self.request.POST.getlist('images_to_delete')
+        self.object.images.filter(id__in=images_to_delete).delete()
+
+        # Guarda y procesa las nuevas imágenes de la propiedad
         images_form = PropertyImageForm(self.request.POST, self.request.FILES)
         if images_form.is_valid():
             images = self.request.FILES.getlist('images')
@@ -190,7 +188,7 @@ class LessorPropertyListView(LessorUserMixin, ListView):
     model = Property
     template_name = "lessor/index.html"
     context_object_name = 'properties'  # Nombre de la variable en la plantilla
-    paginate_by = 6
+    paginate_by = 9
 
     def get_queryset(self, *args, **kwargs):
         # Filtrar y ordenar las propiedades por fecha de publicación

@@ -2,37 +2,43 @@
 
 {% block content %}
 <section class="section-padding">
-    <div class="container">
+    <div class="container mt-5">
         <div class="section-title text-center mb-5">
             <h2 class="pb-2 border-bottom">Detalles de la propiedad</h2>
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-8">
-
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Carrusel de imágenes -->
-                        <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" data-interval="5500">
-                                    <img src="{{ property.images.url }}" alt="{{ property.title }}" class="w-100">
+                {% if property.images %}
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- Carousel's Images -->
+                            <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {% for image in property.images.all %}
+                                        <button data-bs-target="#propertyCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></button >
+                                    {% endfor %}
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    {% for image in property.images.all %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                        <img src="{{ image.images.url }}" alt="{{ property.title }}" class="w-100">
+                                    </div>
+                                    {% endfor%}   
                                 </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class ="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-
-                            <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class ="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
-                </div>
+                {% endif%}
 
-
-                <div class="property-info">
+                <div class="property-info mt-3">
                     <h1>{{ property.title }}</h1>
 
                     <div class="list-icon">
@@ -75,7 +81,7 @@
                     </div>
                 </div>
                 <!-- --------------- -->
-                <div class="card">
+                <div class="card mt-3">
                     <div class="card padding-card">
                         <div class="card-body">
                             <h5 class="card-title mb-3">Detalles</h5>
