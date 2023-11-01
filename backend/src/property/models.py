@@ -58,7 +58,6 @@ class Property(models.Model):
         max_digits=12, decimal_places=2, help_text="Precio de Alquiler (COP)")
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default='pending')
-    #images = models.ImageField(upload_to='media/property/property_images/', blank=True, null=True)
 
     # The line `owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='properties')` in
     # the `Property` model is creating a foreign key relationship between the `Property` model and the
@@ -83,7 +82,7 @@ class Property(models.Model):
                 return self.images.first()
             except PropertyImage.DoesNotExist:
                 return None
-            
+
 
 # The `PropertyFeature` class represents the features of a property, including the number of bedrooms
 # and bathrooms, parking spaces, and whether it has a garden or pool.
@@ -106,10 +105,13 @@ class PropertyFeature(models.Model):
 
 # The `PropertyImage` class represents an image associated with a property.
 class PropertyImage(models.Model):
-    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
-    images = models.ImageField(upload_to='media/property/property_images/', blank=True, null=True)
-    is_main_image = models.BooleanField(default=False, null=True, blank=True, help_text="¿Es la imagen principal de tu propiedad?")
-    
+    property = models.ForeignKey(
+        Property, on_delete=models.CASCADE, related_name='images')
+    images = models.ImageField(
+        upload_to='media/property/property_images/', blank=True, null=True)
+    is_main_image = models.BooleanField(
+        default=False, null=True, blank=True, help_text="¿Es la imagen principal de tu propiedad?")
+
     def __str__(self):
         return self.property.title
 

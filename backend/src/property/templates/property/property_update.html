@@ -11,7 +11,7 @@
         {% csrf_token %}
 
         <!-- Datos de la Propiedad -->
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-header">
                 Datos de la Propiedad
             </div>
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Carga de Imágenes -->
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-header">
                 Imágenes de la Propiedad
             </div>
@@ -44,7 +44,7 @@
         </div>
 
         <!-- Características de la Propiedad -->
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-header">
                 Características de la Propiedad
             </div>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success btn-block">{{ view_type|title }} Propiedad</button>
+        <button type="submit" class="btn btn-success btn-lg">{{ view_type|title }} Propiedad</button>
     </form>
 </div>
 

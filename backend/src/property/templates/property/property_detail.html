@@ -10,9 +10,9 @@
             <div class="col-lg-8 col-md-8">
                 {% if property.images %}
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body p-0">
                             <!-- Carousel's Images -->
-                            <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="carousel">
+                            <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="false">
                                 <ol class="carousel-indicators">
                                     {% for image in property.images.all %}
                                         <button data-bs-target="#propertyCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></button >
@@ -21,7 +21,7 @@
                                 <div class="carousel-inner" role="listbox">
                                     {% for image in property.images.all %}
                                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                        <img src="{{ image.images.url }}" alt="{{ property.title }}" class="w-100">
+                                        <img src="{{ image.images.url }}" class="img-fluid" alt="{{ property.title }}" class="w-100">
                                     </div>
                                     {% endfor%}   
                                 </div>
@@ -160,7 +160,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3>Descripción</h3>
+                            <h4 class="mt-2">Descripción</h4>
                             <p>{{ object.description }}</p>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
 
             <!-- Información del propietario de la propiedad -->
             <div class="col-lg-4 col-md-4">
-                <div class="card sidebar-card">
+                <div class="card sidebar-card shadow-sm">
                     <div class="card-body">
                         <h4 class="card-title mb-4 border-bottom">Arrendatario de la propiedad</h4>
                         <!-- ... Información del lessor(owner) ... -->
