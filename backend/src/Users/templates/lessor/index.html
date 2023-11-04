@@ -18,10 +18,12 @@
                             {% include 'snippet/property_card_user.html' with property=object %}
 
                         {% empty %}
-
-                        <h5>No tienes propiedades actualmente</h5>
+                        <div class="container">
+                        <span><h3>No tienes propiedades actualmente</h3>
                             <a href="{% url 'property:create' %}" class="btn btn-primary">Añadir propiedad</a>
+                        </span>
                         {% endfor %}
+                        </div>
                     </div>
                 </section>
 

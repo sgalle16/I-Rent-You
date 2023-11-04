@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from property.models import Property, PropertyFeature
+from property.models import Property, PropertyFeature, PropertyImage
 import json
 import time
 import os
@@ -24,7 +24,7 @@ def fetch_image(url):
 
 
 class Command(BaseCommand):
-    help = 'Generate images & Load properties from properties_complete.json into the property model and the features to the property feature model'
+    help = 'Generate images & Load properties data from properties_complete.json into the property model, features and images to the property model'
 
     def handle(self, *args, **kwargs):
         # Load properties from JSON file
@@ -50,7 +50,7 @@ class Command(BaseCommand):
                 new_property = Property.objects.create(
                     title=property_data['title'],
                     description=property_data['description'],
-                    images=f'media/property/property_images/{property_data["title"]}.jpg',
+                    #images=f'media/property/property_images/{property_data["title"]}.jpg',
                     type_of_property=property_data['type_of_property'],
                     time_for_rent=property_data['time_for_rent'],
                     location=property_data['location'],
@@ -78,23 +78,27 @@ class Command(BaseCommand):
                     )
                     property_feature.save()
 
-                # Generate and save the image
-                response = openai.Image.create(
-                    prompt=f"Alguna vista de la propiedad desde el exterior {property_data['title']}",
-                    n=1,
-                    size="256x256"
-                )
-                image_url = response['data'][0]['url']
-                img = fetch_image(image_url)
-                img.save(
-                    f'media_root/media/property/property_images/{property_data["title"]}.jpg')
-                new_property.images = f'media/property/property_images/{property_data["title"]}.jpg'
-                new_property.save()
-                time.sleep(20)
+                # Generate and save multiple images
+                for i in range(3):  # Change 3 to the number of images you want
+                    response = openai.Image.create(
+                        prompt=f"Alguna vista de la propiedad desde el exterior {property_data['title']}",
+                        n=1,
+                        size="256x256"
+                    )
+                    image_url = response['data'][0]['url']
+                    img = fetch_image(image_url)
+                    img.save(f'media_root/media/property/property_images/{property_data["title"]}_{i}.jpg')
+                    property_image = PropertyImage(
+                        property=new_property,
+                        images=f'media/property/property_images/{property_data["title"]}_{i}.jpg',
+                        is_main_image=(i == 0)  # Set the first image as the main image
+                    )
+                    property_image.save()
+                time.sleep(25)
                 cont += 1
             else:
                 # Property already exists, you can choose to update its information if needed
                 pass
 
         self.stdout.write(self.style.SUCCESS(
-            f'Successfully added {cont} properties, image and features to the database'))
+            f'Successfully added {cont} properties, images and features to the database'))
