@@ -45,18 +45,17 @@ class PropertyFeatureForm(forms.ModelForm):
 
 
 class PropertyImageForm(forms.ModelForm):
+    images = MultipleFileField(label="Imágenes")
+
     class Meta:
         model = PropertyImage
         fields = ['images', 'is_main_image']
         labels = {
-            'images': 'Imágenes',
             'is_main_image': 'Imagen Principal',
         }
         widgets = {
             'is_main_image': forms.CheckboxInput(),
         }
-
-    images = MultipleFileField()
 
     # Limpia los datos del campo 'images',
     # si el campo está vacío, se permite que esté en blanco.

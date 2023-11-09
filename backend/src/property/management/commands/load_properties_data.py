@@ -26,7 +26,6 @@ class Command(BaseCommand):
                 new_property = Property(
                     title=property_data['title'],
                     description=property_data['description'],
-                    #images=f'media/property/property_images/{property_data["title"]}.jpg',
                     type_of_property=property_data['type_of_property'],
                     time_for_rent=property_data['time_for_rent'],
                     location=property_data['location'],

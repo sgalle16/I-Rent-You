@@ -30,16 +30,18 @@
                 <div class="row">
                     {% for image in property.images.all %}
                         <div class="col-md-4">
-                                <img src="{{ image.images.url }}" class="img-fluid">
+                                <div class="image-thumbnail">
+                                    <img src="{{ image.images.url }}" class="img-fluid">
                                 <p>
                                     <input type="checkbox" name="images_to_delete" value="{{ image.id }}"> Eliminar
                                 </p>
+                                </div>
                         </div>
                     {% endfor %}
                 </div>
                 
                 <h5>Agregar nuevas imágenes:</h5>
-                {{ images_form.images }}
+                {{ images_form | crispy }}
             </div>
         </div>
 
