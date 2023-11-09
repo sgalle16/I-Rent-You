@@ -1,10 +1,11 @@
 from django.core.management.base import BaseCommand
-from property.models import Property, PropertyFeature
+from property.models import Property, PropertyFeature, PropertyImage
 import json
 import os
 
+
 class Command(BaseCommand):
-    help = 'Load properties from properties_complete.json into the property model and feautures'
+    help = 'Load properties from properties_complete.json into the property model, feautures and images.'
 
     def handle(self, *args, **kwargs):
         # Load properties from JSON file
@@ -25,7 +26,6 @@ class Command(BaseCommand):
                 new_property = Property(
                     title=property_data['title'],
                     description=property_data['description'],
-                    images=f'media/property/property_images/{property_data["title"]}.jpg',
                     type_of_property=property_data['type_of_property'],
                     time_for_rent=property_data['time_for_rent'],
                     location=property_data['location'],
@@ -42,14 +42,30 @@ class Command(BaseCommand):
                     property_feature = PropertyFeature(
                         property=new_property,
                         num_bedrooms=property_feature_data.get('num_bedrooms'),
-                        num_bathrooms=property_feature_data.get('num_bathrooms'),
-                        parking_spaces=property_feature_data.get('parking_spaces'),
+                        num_bathrooms=property_feature_data.get(
+                            'num_bathrooms'),
+                        parking_spaces=property_feature_data.get(
+                            'parking_spaces'),
                         garden=property_feature_data.get('garden'),
                         pool=property_feature_data.get('pool'),
                         backyard=property_feature_data.get('backyard'),
                         furnished=property_feature_data.get('furnished')
                     )
                     property_feature.save()
+
+                # Check if the property has images (assuming all images starting with the title belong to the property)
+                image_folder = 'media_root/media/property/property_images/'
+                title = property_data['title']
+                property_images_data = [img for img in os.listdir(image_folder) if img.startswith(title)]
+                for i, img_filename in enumerate(property_images_data):
+                    img_path = os.path.join(image_folder, img_filename)
+                    if os.path.isfile(img_path):
+                        property_image = PropertyImage(
+                            property=new_property,
+                            images=f'media/property/property_images/{property_data["title"]}_{i}.jpg',
+                            is_main_image=(i == 0)
+                        )
+                        property_image.save()
 
                 count += 1
             else:

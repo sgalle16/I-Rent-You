@@ -1,38 +1,45 @@
 {% extends 'base.html' %}
+{%load static%}
 
 {% block content %}
 <section class="section-padding">
-    <div class="container">
+    <div class="container mt-5">
         <div class="section-title text-center mb-5">
             <h2 class="pb-2 border-bottom">Detalles de la propiedad</h2>
         </div>
         <div class="row">
             <div class="col-lg-8 col-md-8">
-
-                <div class="card">
-                    <div class="card-body">
-                        <!-- Carrusel de imágenes -->
-                        <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active" data-interval="5500">
-                                    <img src="{{ property.images.url }}" alt="{{ property.title }}" class="w-100">
+                {% if property.images %}
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <!-- Carousel's Images -->
+                            <div id="propertyCarousel" class="carousel slide mb-6 carousel-fade" data-bs-ride="false">
+                                <ol class="carousel-indicators">
+                                    {% for image in property.images.all %}
+                                        <button data-bs-target="#propertyCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></button >
+                                    {% endfor %}
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    {% for image in property.images.all %}
+                                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                        <img src="{{ image.images.url }}" class="img-fluid" alt="{{ property.title }}" class="w-100">
+                                    </div>
+                                    {% endfor%}   
                                 </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class ="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
                             </div>
-
-                            <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class ="carousel-control-next" type="button" data-bs-target="#propertyCarousel" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
                         </div>
                     </div>
-                </div>
+                {% endif%}
 
-
-                <div class="property-info">
+                <div class="property-info mt-3">
                     <h1>{{ property.title }}</h1>
 
                     <div class="list-icon">
@@ -75,7 +82,7 @@
                     </div>
                 </div>
                 <!-- --------------- -->
-                <div class="card">
+                <div class="card mt-3">
                     <div class="card padding-card">
                         <div class="card-body">
                             <h5 class="card-title mb-3">Detalles</h5>
@@ -154,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h3>Descripción</h3>
+                            <h4 class="mt-2">Descripción</h4>
                             <p>{{ object.description }}</p>
                         </div>
                     </div>
@@ -163,7 +170,7 @@
 
             <!-- Información del propietario de la propiedad -->
             <div class="col-lg-4 col-md-4">
-                <div class="card sidebar-card">
+                <div class="card sidebar-card shadow-sm">
                     <div class="card-body">
                         <h4 class="card-title mb-4 border-bottom">Arrendatario de la propiedad</h4>
                         <!-- ... Información del lessor(owner) ... -->
@@ -185,3 +192,18 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block style %}
+    <style>
+    #propertyCarousel {
+        width: 100%;
+        max-height: 100%;
+    }
+
+    #propertyCarousel .carousel-item img {
+        object-fit: cover; 
+        width: 100%;
+        height: 500px;
+    }
+    </style>
+{% endblock %}

@@ -8,8 +8,8 @@
         {% if property.id %}
             <div class="img-box">
                 <a href="{% url 'property:detail' pk=property.id %}">
-                    {% if property.images.url %}
-                        <img src="{{ property.images.url }}" class="card-img-top" alt="Imagen de la propiedad">
+                    {% if property.images.first %}
+                        <img src="{{ property.images.first.images.url }}" class="card-img-top" alt="Imagen de la propiedad">
                     {% endif %}
                 </a>
             </div>

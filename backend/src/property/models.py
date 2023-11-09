@@ -49,7 +49,7 @@ class Property(models.Model):
     title = models.CharField(max_length=100)
     type_of_property = models.CharField(max_length=20, choices=PROPERTY_TYPES)
     time_for_rent = models.CharField(max_length=20,
-        choices=TIME_RENT,  help_text="Tiempo de renta en meses")
+                                     choices=TIME_RENT,  help_text="Tiempo de renta en meses")
     location = models.CharField(max_length=200, blank=False)
     address = models.CharField(max_length=300, blank=False)
     size = models.DecimalField(
@@ -58,8 +58,6 @@ class Property(models.Model):
         max_digits=12, decimal_places=2, help_text="Precio de Alquiler (COP)")
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default='pending')
-    images = models.ImageField(
-        upload_to='media/property/property_images/', blank=True, null=True)
 
     # The line `owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='properties')` in
     # the `Property` model is creating a foreign key relationship between the `Property` model and the
@@ -74,6 +72,17 @@ class Property(models.Model):
     def __str__(self):
         return f"{self.type_of_property} | {self.title} en {self.location} - Estado: {self.get_status_display()}"
 
+    def get_main_image(self):
+        # Obtener la imagen principal de la propiedad
+        try:
+            return self.images.get(is_main_image=True)
+        except PropertyImage.DoesNotExist:
+            # Si no hay una imagen principal, devolver la primera imagen
+            try:
+                return self.images.first()
+            except PropertyImage.DoesNotExist:
+                return None
+
 
 # The `PropertyFeature` class represents the features of a property, including the number of bedrooms
 # and bathrooms, parking spaces, and whether it has a garden or pool.
@@ -81,9 +90,9 @@ class PropertyFeature(models.Model):
     property = models.OneToOneField(
         Property, on_delete=models.CASCADE, related_name='features')
     num_bedrooms = models.CharField(max_length=10,
-        choices=NUM_BEDROOM, unique=False)
+                                    choices=NUM_BEDROOM, unique=False)
     num_bathrooms = models.CharField(max_length=10,
-        choices=NUM_BATHROOM, unique=False)
+                                     choices=NUM_BATHROOM, unique=False)
     parking_spaces = models.PositiveIntegerField()
     garden = models.BooleanField(default=False)
     pool = models.BooleanField(default=False)
@@ -92,6 +101,19 @@ class PropertyFeature(models.Model):
 
     def __str__(self):
         return f"Características de {self.property.title}: {self.num_bedrooms} Beds | {self.num_bathrooms} Baths"
+
+
+# The `PropertyImage` class represents an image associated with a property.
+class PropertyImage(models.Model):
+    property = models.ForeignKey(
+        Property, on_delete=models.CASCADE, related_name='images')
+    images = models.ImageField(
+        upload_to='media/property/property_images/', blank=True, null=True)
+    is_main_image = models.BooleanField(
+        default=False, null=True, blank=True, help_text="¿Es la imagen principal de tu propiedad?")
+
+    def __str__(self):
+        return self.property.title
 
 
 # The `PropertyComment` class represents a comment made by a user on a property, with fields for the

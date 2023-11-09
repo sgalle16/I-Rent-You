@@ -3,14 +3,15 @@
 
 {% block content %}
 
-<div class="container">
-    <h1 class="mt-4 mb-4">{{ view_type|title }} nueva Propiedad</h1>
-    
+<div class="container mt-5">
+    <div class="section-title text-center mb-5">
+        <h1 class="pb-2 border-bottom" >{{ view_type|title }} nueva Propiedad</h1>
+    </div>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
     
         <!-- Datos de la Propiedad -->
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-header">
                 Datos de la Propiedad
             </div>
@@ -18,18 +19,26 @@
                 {{ form|crispy }}
             </div>
         </div>
-        
+         <!-- Carga de Imágenes -->
+        <div class="card mb-4 shadow">
+            <div class="card-header">
+                Carga de Imágenes de tu actual propiedad 
+            </div>
+            <div class="card-body">
+                {{ images_form|crispy  }}  
+            </div>
+        </div>
         <!-- Características de la Propiedad -->
-        <div class="card mb-4">
+        <div class="card mb-4 shadow">
             <div class="card-header">
                 Características de la Propiedad
             </div>
             <div class="card-body">
                 {{ feature_form|crispy }}
             </div>
-        </div>
+        </div>  
 
-        <button type="submit" class="btn btn-success btn-block">{{ view_type|title }} Propiedad</button>
+        <button type="submit" class="btn btn-success btn-lg">{{ view_type|title }} Propiedad</button>
     </form>
 </div>
 {% endblock content %}

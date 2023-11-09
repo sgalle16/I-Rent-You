@@ -1,9 +1,8 @@
-from random import shuffle
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
-from .models import Property, PropertyFeature, PropertyComment, PropertyRating
-from .forms import PropertyForm, PropertyFeatureForm
+from .models import Property, PropertyFeature, PropertyImage, PropertyComment, PropertyRating
+from .forms import PropertyForm, PropertyFeatureForm, PropertyImageForm
 from django.urls import reverse, reverse_lazy
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -90,7 +89,7 @@ class PropertyCreateView(LessorUserMixin, CreateView):
     form_class = PropertyForm
     model = Property
     template_name = 'property/property_create.html'
-    success_url = reverse_lazy('property:list')
+    success_url = reverse_lazy('user:lessor-properties')
 
     def form_valid(self, form):
         # Verifica si el usuario actual no tiene permisos para crear una propiedad
@@ -109,6 +108,15 @@ class PropertyCreateView(LessorUserMixin, CreateView):
                 feature = feature_form.save(commit=False)
                 feature.property = self.object  # 'self.object' contiene la propiedad recién creada
                 feature.save()
+
+            # Guarda y procesa el formulario de imágenes
+            images_form = PropertyImageForm(
+                self.request.POST, self.request.FILES)
+            if images_form.is_valid():
+                images = [PropertyImage(property=self.object, images=image)
+                          for image in images_form.cleaned_data['images'] if image]
+                PropertyImage.objects.bulk_create(images)
+
             return response
         else:
             return self.form_invalid(form)
@@ -118,7 +126,9 @@ class PropertyCreateView(LessorUserMixin, CreateView):
         context.update({
             'view_type': 'Crear',
             # Agrega un formulario de características vacío al contexto
-            'feature_form': PropertyFeatureForm()
+            'feature_form': PropertyFeatureForm(),
+            # Agregar un formulario para cargar imágenes
+            'images_form': PropertyImageForm(),
         })
         return context
 
@@ -137,21 +147,40 @@ class PropertyUpdateView(PropertyLessorMixin, UpdateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
+        # Guarda las características de la propiedad
         feature_form = PropertyFeatureForm(
             self.request.POST, instance=self.object.features)
         if feature_form.is_valid():
             feature_form.save()
+
+        # Elimina imágenes marcadas para eliminación
+        images_to_delete = self.request.POST.getlist('images_to_delete')
+        self.object.images.filter(id__in=images_to_delete).delete()
+
+        # Guarda y procesa las nuevas imágenes de la propiedad
+        images_form = PropertyImageForm(self.request.POST, self.request.FILES)
+        if images_form.is_valid():
+            images = self.request.FILES.getlist('images')
+            for image in images:
+                PropertyImage.objects.create(
+                    property=self.object, images=image)
 
         return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'Actualizar',
+            'view_type': 'Editar',
             # Proporciona una instancia para editar características
             'feature_form': PropertyFeatureForm(instance=self.object.features),
+            # Agregar un formulario para cargar imágenes
+            'images_form': PropertyImageForm(),
 
         })
+        # Si estás editando una propiedad existente, pasa las imágenes existentes
+        if self.object:
+            context['property_images'] = self.object.images.all()
+
         return context
 
 
@@ -159,7 +188,7 @@ class LessorPropertyListView(LessorUserMixin, ListView):
     model = Property
     template_name = "lessor/index.html"
     context_object_name = 'properties'  # Nombre de la variable en la plantilla
-    paginate_by = 6
+    paginate_by = 9
 
     def get_queryset(self, *args, **kwargs):
         # Filtrar y ordenar las propiedades por fecha de publicación

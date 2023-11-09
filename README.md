@@ -13,7 +13,12 @@ This project aims to provide an online platform for users to register their prop
 - Viewing of available properties for rent by tenants.
 - Rental payment management
 
-## More info 
+## Technologies Used
+
+- [Django](https://www.djangoproject.com/)
+- [Bootstrap](https://getbootstrap.com/)
+
+## More Info 
 
 For additional details about the project, see our [Wiki](https://github.com/sgalle16/I-Rent-You/wiki)
 
@@ -38,7 +43,7 @@ source venv/bin/activate
 ```
 On Unix systems, on Windows it would be "venv\Scripts\activate"  
 
-## Required Libraries
+### Required Libraries
 
 Before running the program, make sure you have the following libraries installed:
 
@@ -53,12 +58,18 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 
-### 4. Start the development server:
+### 4. Load sample properties data (Optional):
+
+You can load sample properties data using the following command:
+
+```bash
+python manage.py load_properties_data
+```
+
+### 5. Start the development server:
 ```bash
 python manage.py runserver
 ```
 
-### 5. Open your web browser and visit:
+### 6. Open your web browser and visit:
   http://localhost:8000/ to access the platform.
-
-
