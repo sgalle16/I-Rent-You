@@ -2,21 +2,23 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<h3 style="color: #007BFF; font-size: 24px; font-weight: bold; text-align: center;">Registro de Usuario</h3>
+<div class="container">
+  <h3 class="mt-5" style="color: #1E1E1E; font-size: 24px; font-weight: bold; text-align: center;">Registro de Usuario</h3>
 
-<br>
+  <br>
 
-<form action="" method="post">
-    {% csrf_token %}
-    <div class="card mx-auto" style="width: 30rem;">
-      <div class="card-body">
-        <h5 class="card-title">Complete todos los campos</h5>
-        {{ form | crispy }}
-        <button class="btn btn-sm btn-primary float-end" type="submit">Registrarse</button>
+  <form action="" method="post">
+      {% csrf_token %}
+      <div class="card mx-auto shadow" style="width: 30rem;">
+        <div class="card-body">
+          <h5 class="card-title">Complete todos los campos</h5>
+          {{ form | crispy }}
+        </div>
+        <button class="btn btn-dark d-grid gap-2 mb-3 col-6 mx-auto" type="submit">Registrarse</button>
       </div>
+      <div class="text-center mt-4">
+        <a href="{% url 'user:login' %}" class="btn btn-link">¿Ya tienes una cuenta? Iniciar sesión</a>
     </div>
-    <div class="text-center mt-3">
-      <a href="{% url 'user:login' %}" class="btn btn-link">¿Ya tienes una cuenta? Iniciar sesión</a>
-  </div>
-</form>
+  </form>
+</div>
 {% endblock %}
