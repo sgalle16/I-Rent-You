@@ -9,7 +9,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Load properties from JSON file
-        with open('/home/shaan/I-Rent-You/properties_complete.json', 'r') as file:
+        script_dir = os.path.dirname(__file__)
+        project_dir = os.path.abspath(os.path.join(script_dir, '..', '..', '..', '..', '..'))
+        data_path = 'properties_complete.json'
+        file_path = os.path.join(project_dir, data_path)
+
+        with open(file_path, 'r') as file:
             properties_data = json.load(file)
 
         # Initialize a counter for added properties
