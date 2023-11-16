@@ -73,10 +73,15 @@
   </nav>
 </header>
 
-  {% block content %}
 
-      
-  {% endblock content %}
+
+        {% include 'snippets/messages.html' %}
+
+        {% block content %}  
+        
+        {% endblock content %}
+        
+
 
 </br>
 
@@ -140,6 +145,6 @@
     </div>
 </footer>
 
-
+  
 </body>
 </html>

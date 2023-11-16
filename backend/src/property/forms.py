@@ -45,7 +45,7 @@ class PropertyFeatureForm(forms.ModelForm):
 
 
 class PropertyImageForm(forms.ModelForm):
-    images = MultipleFileField(label="Imágenes")
+    images = MultipleFileField(label="Imágenes", required=False)
 
     class Meta:
         model = PropertyImage

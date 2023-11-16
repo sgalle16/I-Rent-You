@@ -9,6 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin
 from Users.mixins import LessorUserMixin, TenantUserMixin
 from .mixins import PropertyLessorMixin
+from django.contrib import messages
 
 
 class PropertySearchListView(ListView):
@@ -117,8 +118,13 @@ class PropertyCreateView(LessorUserMixin, CreateView):
                           for image in images_form.cleaned_data['images'] if image]
                 PropertyImage.objects.bulk_create(images)
 
+                messages.success(
+                    self.request, 'La propiedad se ha creado exitosamente.')
             return response
+
         else:
+            messages.error(
+                self.request, 'Hubo un error al procesar el formulario.')
             return self.form_invalid(form)
 
     def get_context_data(self, **kwargs):
@@ -146,17 +152,38 @@ class PropertyUpdateView(PropertyLessorMixin, UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        # Llama al método form_valid de la clase base
         response = super().form_valid(form)
+
         # Guarda las características de la propiedad
+        self.save_property_features()
+
+        # Elimina imágenes marcadas para eliminación
+        self.delete_marked_images()
+
+        # Guarda y procesa las nuevas imágenes de la propiedad
+        self.save_property_images()
+
+        # Muestra un mensaje de éxito
+        messages.success(
+            self.request, 'La propiedad se ha actualizado exitosamente.')
+
+        return response
+
+    def save_property_features(self):
+        # Obtiene el formulario de características y lo guarda
         feature_form = PropertyFeatureForm(
             self.request.POST, instance=self.object.features)
         if feature_form.is_valid():
             feature_form.save()
 
-        # Elimina imágenes marcadas para eliminación
+    def delete_marked_images(self):
+        # Obtiene las imágenes marcadas para eliminación y las elimina
         images_to_delete = self.request.POST.getlist('images_to_delete')
-        self.object.images.filter(id__in=images_to_delete).delete()
+        if images_to_delete:
+            self.object.images.filter(id__in=images_to_delete).delete()
 
+    def save_property_images(self):
         # Guarda y procesa las nuevas imágenes de la propiedad
         images_form = PropertyImageForm(self.request.POST, self.request.FILES)
         if images_form.is_valid():
@@ -164,20 +191,21 @@ class PropertyUpdateView(PropertyLessorMixin, UpdateView):
             for image in images:
                 PropertyImage.objects.create(
                     property=self.object, images=image)
-
-        return response
+        else:
+            # Muestra un mensaje de error si hay problemas con las imágenes
+            messages.error(
+                self.request, 'Hubo un problema al cargar las imágenes. Por favor, verifica los archivos.')
 
     def get_context_data(self, **kwargs):
+        # Obtiene el contexto de la superclase
         context = super().get_context_data(**kwargs)
+        # Agrega información adicional al contexto
         context.update({
             'view_type': 'Editar',
-            # Proporciona una instancia para editar características
             'feature_form': PropertyFeatureForm(instance=self.object.features),
-            # Agregar un formulario para cargar imágenes
             'images_form': PropertyImageForm(),
-
         })
-        # Si estás editando una propiedad existente, pasa las imágenes existentes
+        # Si estás editando una propiedad existente, pasa las imágenes existentes al contexto
         if self.object:
             context['property_images'] = self.object.images.all()
 
@@ -231,3 +259,7 @@ class PropertyDeleteView(PropertyLessorMixin, DeleteView):
         if not self.can_create_property():
             raise Http404("No tiene permisos para eliminar esta propiedad.")
         return super().dispatch(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        messages.info(self.request, 'La propiedad se ha eliminado exitosamente.')
+        return super().delete(request, *args, **kwargs)

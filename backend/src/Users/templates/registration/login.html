@@ -1,13 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
 <div class="container">
     <h3 class="mt-5" style="color: #1E1E1E; font-size: 24px; font-weight: bold; text-align: center;">Inicio de Sesión</h3>

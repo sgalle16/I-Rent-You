@@ -25,6 +25,7 @@ def properties(request):
 @login_required
 def logoutaccount(request):
     logout(request)
+    messages.info(request, 'Has cerrado sesión exitosamente.')
     return redirect('home')
 
 
@@ -40,6 +41,7 @@ def login_view(request):
         if user is not None:
             if user.is_active:  # Verifica si el usuario está activo
                 login(request, user)
+                messages.success(request, 'Has iniciado sesión exitosamente.')
                 return redirect('home')
             else:
                 # Mensaje en caso de usuario inactivo
@@ -68,6 +70,7 @@ def register_view(request):
                 username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             if user is not None:
                 login(request, user)
+                messages.success(request, 'Tu cuenta ha sido creada exitosamente.')
                 return redirect('property:list')
         else:
             data['form'] = user_creation_form
@@ -82,6 +85,7 @@ def view_and_edit_profile(request):
         form = ProfileEditForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Tu perfil ha sido actualizado exitosamente.')
             # Puedes redirigir a la página de perfil nuevamente
             return redirect('home')
     else:
@@ -95,6 +99,7 @@ def confirm_delete_account(request):
     if request.method == 'POST':
         # Elimina la cuenta y redirige a la página de inicio u otra página.
         request.user.delete()
+        messages.info(request, 'Tu cuenta ha sido eliminada exitosamente.')
         return redirect('home')  # Reemplaza 'home' con la URL adecuada.
 
     return render(request, 'registration/confirm_delete_account.html')
@@ -125,6 +130,6 @@ class CustomPasswordChangeView(PasswordChangeView):
     def form_valid(self, form):
         response = super().form_valid(form)
         update_session_auth_hash(self.request, self.request.user)
-        messages.success(
+        messages.info(
             self.request, 'Tu contraseña ha sido cambiada con éxito.')
         return response
