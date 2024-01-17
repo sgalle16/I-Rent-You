@@ -73,3 +73,16 @@ python manage.py runserver
 
 ### 6. Open your web browser and visit:
   http://localhost:8000/ to access the platform.
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+This project was created by [Santiago Gallego Quintero](mailto:sgalle16@eafit.edu.co) and [Alberto Andres Diaz Mejia](mailto:aadiazm@eafit.edu.co).
+
+
+
+
